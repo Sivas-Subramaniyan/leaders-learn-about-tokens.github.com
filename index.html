@@ -3,1029 +3,1048 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tokens: The Hidden Currency of AI — Deloitte Partners</title>
+<title>Tokens for Partners — Deloitte AI Literacy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#06070D;--surface:#0D1120;--card:#131929;--border:#1E2B40;
-  --gold:#C9A844;--gold-dim:#8A6E2A;--electric:#38BDF8;--electric-dim:#1E6A8A;
-  --text:#E4E8EF;--muted:#6B7A99;--subtle:#2A3550;
-  --t1:#FF6B6B;--t2:#4ECDC4;--t3:#45B7D1;--t4:#96CEB4;
-  --t5:#FBBF24;--t6:#C084FC;--t7:#34D399;--t8:#FB923C;
+  /* Deloitte Brand Palette */
+  --dg:#86BC25;          /* Deloitte Green — primary */
+  --dg-dark:#4D7A00;     /* Dark green — text on white */
+  --dg-deep:#2E5400;     /* Deepest green — headings */
+  --dg-light:#A8D44F;    /* Light green — hover/tint */
+  --dg-wash:#EEF5D6;     /* Very light green — section wash */
+  --dg-wash2:#F5FAE8;    /* Subtler wash */
+  --black:#000000;       /* Deloitte Black */
+  --near-black:#111111;  /* Near-black for hero bg */
+  --white:#FFFFFF;
+  --off-white:#F8F8F6;   /* Off-white sections */
+  --gray-90:#1A1A1A;     /* Almost black */
+  --gray-60:#53565A;     /* Deloitte body gray */
+  --gray-40:#888B8D;     /* Mid gray */
+  --gray-20:#CCCCCC;     /* Border gray */
+  --gray-10:#E8E8E8;     /* Light border */
+  --gray-05:#F2F2F2;     /* Section bg */
+  /* Token chip colours — varied for visual distinction */
+  --t1:#86BC25;--t2:#2E7D32;--t3:#0277BD;--t4:#4D7A00;
+  --t5:#00838F;--t6:#6A1B9A;--t7:#C62828;--t8:#E65100;
 }
-html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--black);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,7,13,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;gap:2rem;height:56px}
-.nav-brand{font-family:'Syne',sans-serif;font-weight:800;font-size:14px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;white-space:nowrap}
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:2px solid var(--dg);height:52px;display:flex;align-items:center;padding:0 5%;gap:2rem}
+.nav-logo{font-family:'DM Sans',sans-serif;font-weight:700;font-size:16px;color:var(--black);letter-spacing:-.01em;white-space:nowrap;display:flex;align-items:center;gap:2px}
+.nav-logo .dot{color:var(--dg);font-size:22px;line-height:1;margin-left:1px}
 .nav-links{display:flex;gap:0;flex:1}
-.nav-links a{font-size:12px;font-weight:500;color:var(--muted);text-decoration:none;padding:0 14px;letter-spacing:.06em;text-transform:uppercase;height:56px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:all .2s}
-.nav-links a:hover{color:var(--text);border-bottom-color:var(--gold)}
-.badge{background:var(--gold);color:#000;font-size:9px;font-weight:700;letter-spacing:.1em;padding:2px 8px;border-radius:2px;margin-left:auto;text-transform:uppercase}
+.nav-links a{font-size:11px;font-weight:500;color:var(--gray-60);text-decoration:none;padding:0 12px;letter-spacing:.07em;text-transform:uppercase;height:52px;display:flex;align-items:center;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+.nav-links a:hover{color:var(--black);border-bottom-color:var(--dg)}
+.nav-pill{background:var(--dg);color:var(--white);font-size:10px;font-weight:600;letter-spacing:.1em;padding:5px 14px;border-radius:2px;text-transform:uppercase;margin-left:auto;white-space:nowrap}
 
-/* SECTIONS */
-section{padding:90px 5% 80px;max-width:1200px;margin:0 auto}
-.section-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px}
-h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(52px,7vw,88px);line-height:.95;letter-spacing:-.02em;color:var(--text)}
-h2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-.01em;margin-bottom:24px}
-h3{font-family:'Syne',sans-serif;font-weight:600;font-size:20px;margin-bottom:12px}
-p{color:#B0B8CC;line-height:1.75;font-weight:300}
+/* ── TYPE ── */
+h1,h2,h3{font-family:'Playfair Display',serif}
+h1{font-size:clamp(52px,7.5vw,108px);font-weight:900;line-height:.88;letter-spacing:-.03em}
+h2{font-size:clamp(30px,4vw,50px);font-weight:700;line-height:1.05;letter-spacing:-.02em}
+h3{font-size:22px;font-weight:700;letter-spacing:-.01em;margin-bottom:10px}
+p{color:var(--gray-60);line-height:1.75;font-weight:300}
+.eyebrow{font-family:'DM Mono',monospace;font-size:10px;color:var(--dg-dark);letter-spacing:.22em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--dg)}
 
-/* HERO */
-#hero{padding-top:140px;padding-bottom:80px;position:relative;overflow:hidden;max-width:100%;width:100%}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto;padding:0 5%}
-.hero-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.25em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
-.hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(56px,8vw,100px);line-height:.9;letter-spacing:-.03em;margin-bottom:28px}
-.hero-title .highlight{color:var(--gold)}
-.hero-sub{font-size:17px;color:var(--muted);font-weight:300;max-width:420px;margin-bottom:40px;line-height:1.7}
-.stat-row{display:flex;gap:32px}
-.stat-item{border-left:2px solid var(--gold);padding-left:16px}
-.stat-num{font-family:'Syne',sans-serif;font-weight:700;font-size:32px;color:var(--gold);line-height:1}
-.stat-label{font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.05em}
+/* ── LAYOUT ── */
+.wrap{max-width:1160px;margin:0 auto;padding:0 5%}
+section{padding:88px 0}
+hr.div{border:none;border-top:1px solid var(--gray-10);margin:0 5%}
 
-/* Token burst animation */
-.token-burst{position:relative;height:340px;display:flex;align-items:center;justify-content:center}
-.burst-word{font-family:'Syne',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:800;text-align:center;position:absolute;transition:all .6s ease;opacity:0}
-.burst-word.active{opacity:1}
-.token-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
-.chip{font-family:'IBM Plex Mono',monospace;font-size:clamp(14px,2vw,20px);font-weight:600;padding:8px 16px;border-radius:4px;opacity:0;transform:scale(.6) translateY(20px);transition:all .4s ease;border:1px solid transparent}
-.chip.visible{opacity:1;transform:scale(1) translateY(0)}
-.label-count{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);position:absolute;bottom:20px;left:50%;transform:translateX(-50%);letter-spacing:.1em;opacity:0;transition:opacity .4s}
-.label-count.show{opacity:1}
-.hero-bg-grid{position:absolute;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;pointer-events:none}
+/* ── HERO ── */
+#hero{padding:140px 5% 80px;background:var(--black);color:var(--white);position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(134,188,37,.06) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(134,188,37,.06) 40px);pointer-events:none}
+.hero-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;position:relative}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.6);font-weight:300;max-width:400px;margin:28px 0 36px;line-height:1.75}
+.hero-sub strong{color:var(--white)}
+/* Animated meter */
+.meter-display{background:#0A0A0A;border:1px solid #222;border-radius:4px;padding:32px;font-family:'DM Mono',monospace;border-top:3px solid var(--dg)}
+.meter-header{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#444;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.meter-header::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--dg);display:inline-block;animation:pulse 1.2s infinite}
+.meter-fare{font-size:52px;font-weight:500;color:var(--dg);line-height:1;letter-spacing:-.02em;min-height:64px;transition:color .2s;font-family:'DM Mono',monospace}
+.meter-subrow{display:flex;justify-content:space-between;margin-top:16px;padding-top:16px;border-top:1px solid #1E1E1E}
+.meter-col{text-align:center}
+.meter-col .mc-val{font-size:18px;font-weight:500;color:var(--white);margin-bottom:2px}
+.meter-col .mc-lbl{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#444}
+.meter-status{margin-top:20px;padding:10px 14px;background:#111;border-radius:3px;font-size:11px;color:#555;display:flex;align-items:center;gap:8px;border-left:2px solid var(--dg)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.hero-chip{font-size:11px;padding:5px 13px;border-radius:2px;font-family:'DM Mono',monospace}
+.chip-green{background:rgba(134,188,37,.15);color:var(--dg-light);border:1px solid rgba(134,188,37,.3)}
+.chip-dim{background:rgba(255,255,255,.05);color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1)}
+.hero-typing{margin-top:18px;font-family:'DM Mono',monospace;font-size:11px;color:#333;line-height:1.8;min-height:36px}
 
-/* CONCEPT CARDS */
-.concept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-.concept-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:32px;position:relative;overflow:hidden;transition:border-color .3s}
-.concept-card:hover{border-color:var(--gold-dim)}
-.concept-num{font-family:'IBM Plex Mono',monospace;font-size:64px;font-weight:600;color:var(--subtle);line-height:1;position:absolute;top:16px;right:20px}
-.concept-icon{width:48px;height:48px;border-radius:8px;background:rgba(201,168,68,.1);border:1px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:22px}
-.concept-card p{font-size:14px;margin-top:10px;line-height:1.65}
-.token-example{display:flex;flex-wrap:wrap;gap:4px;margin-top:16px}
-.te{font-family:'IBM Plex Mono',monospace;font-size:12px;padding:3px 8px;border-radius:3px;font-weight:600;border:1px solid transparent}
+/* ── METER SECTION ── */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.concept-pull{background:var(--dg-wash);border-left:4px solid var(--dg);border-radius:0 4px 4px 0;padding:24px 28px;margin:24px 0}
+.concept-pull .cq{font-family:'Playfair Display',serif;font-style:italic;font-size:19px;color:var(--black);line-height:1.45;margin-bottom:10px}
+.concept-pull .ca{font-size:11px;color:var(--dg-dark);font-family:'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+.token-strip{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;align-items:center}
+.tok-chip{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;padding:5px 12px;border-radius:2px;border:1px solid transparent;cursor:default;transition:transform .15s}
+.tok-chip:hover{transform:scale(1.08)}
+.click-meter{background:var(--black);color:var(--white);border-radius:4px;padding:28px;margin-top:24px;border-top:3px solid var(--dg)}
+.cm-word{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--white);margin-bottom:12px;min-height:44px}
+.cm-chips{display:flex;gap:8px;flex-wrap:wrap;min-height:36px;margin-bottom:16px}
+.cm-chip{font-family:'DM Mono',monospace;font-size:13px;padding:5px 14px;border-radius:2px;border:1px solid;opacity:0;transform:translateY(8px);transition:all .3s}
+.cm-chip.show{opacity:1;transform:none}
+.cm-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid #222}
+.cm-count{font-family:'DM Mono',monospace;font-size:28px;font-weight:500;color:var(--dg)}
+.cm-label{font-size:11px;color:#555;letter-spacing:.12em;text-transform:uppercase}
+.cm-btn{font-size:11px;color:#555;font-family:'DM Mono',monospace;background:#111;border:1px solid #2A2A2A;border-radius:2px;padding:6px 14px;cursor:pointer;transition:all .2s}
+.cm-btn:hover{color:var(--dg);border-color:var(--dg)}
+.stats-box{background:var(--gray-05);border:1px solid var(--gray-10);border-radius:4px;padding:24px;margin-top:24px}
+.sb-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.sb-item{background:var(--white);border:1px solid var(--gray-10);border-radius:3px;padding:14px;text-align:center}
+.sb-num{font-family:'Playfair Display',serif;font-weight:700;font-size:26px;color:var(--black);line-height:1}
+.sb-lbl{font-size:11px;color:var(--gray-40);margin-top:4px}
 
-/* TOKEN LAB */
-#lab{background:var(--surface);max-width:100%;width:100%;padding:80px 5%}
-.lab-inner{max-width:1200px;margin:0 auto}
-.lab-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px}
-.lab-input-area{position:relative}
-.lab-textarea{width:100%;height:200px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;padding:20px;resize:none;outline:none;transition:border-color .2s;line-height:1.65}
-.lab-textarea:focus{border-color:var(--gold-dim)}
-.lab-textarea::placeholder{color:var(--muted)}
-.model-selector{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-.model-btn{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:6px 14px;border-radius:4px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;letter-spacing:.05em}
-.model-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(201,168,68,.08)}
-.lab-output{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:20px;min-height:200px}
-.token-display{font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:2;word-break:break-all}
-.tok{border-radius:3px;padding:2px 0;cursor:default;border:1px solid transparent;transition:opacity .15s}
-.tok:hover{opacity:.7}
-.lab-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px;text-align:center}
-.stat-card .num{font-family:'Syne',sans-serif;font-weight:700;font-size:28px;color:var(--text)}
-.stat-card .lbl{font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.08em;text-transform:uppercase}
-.stat-card.cost-card .num{color:var(--gold)}
-.output-label{font-size:11px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;margin-bottom:12px}
+/* ── INPUT vs OUTPUT ── */
+#io{background:var(--gray-05)}
+.io-split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--gray-20);border-radius:4px;overflow:hidden;margin-top:40px}
+.io-col{padding:36px;background:var(--white)}
+.io-col:first-child{border-right:1px solid var(--gray-10)}
+.io-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.io-price{font-family:'Playfair Display',serif;font-size:48px;font-weight:900;line-height:1;margin:12px 0 8px}
+.io-sub{font-size:13px;color:var(--gray-60);margin-bottom:20px}
+.io-analogy{background:var(--gray-05);border-radius:3px;padding:16px 20px;font-size:13px;color:var(--gray-60);line-height:1.6;border:1px solid var(--gray-10)}
+.io-analogy strong{color:var(--black)}
+.io-analogy .tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;display:block}
+.ratio-card{background:var(--white);border:1px solid var(--gray-20);border-radius:4px;padding:28px;margin-top:28px}
+.rb-track{display:flex;height:44px;border-radius:3px;overflow:hidden;margin:16px 0;border:1px solid var(--gray-10)}
+.rb-in{background:var(--black);display:flex;align-items:center;justify-content:flex-end;padding-right:14px;font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,.7);width:17%;letter-spacing:.08em}
+.rb-out{background:var(--dg);display:flex;align-items:center;padding-left:14px;font-family:'DM Mono',monospace;font-size:11px;color:rgba(0,0,0,.8);width:83%;letter-spacing:.08em;font-weight:500}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.trio-item{background:var(--gray-05);border-radius:3px;padding:16px;text-align:center;border:1px solid var(--gray-10)}
+.trio-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--black)}
+.trio-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-40);margin-bottom:6px}
+.trio-sub{font-size:11px;color:var(--gray-60);margin-top:4px}
 
-/* THE ECONOMY */
-.economy-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px;align-items:start}
-.model-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
-.model-table th{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;padding:10px 16px;text-align:left;border-bottom:1px solid var(--border)}
-.model-table td{padding:14px 16px;border-bottom:1px solid var(--subtle);color:var(--text)}
-.model-table tr:hover td{background:var(--card)}
-.model-table td:first-child{font-weight:500}
-.input-val{color:var(--electric)}
-.output-val{color:var(--t1)}
-.tier-badge{font-size:10px;padding:2px 8px;border-radius:20px;font-family:'IBM Plex Mono',monospace;font-weight:600;letter-spacing:.05em}
-.tier-fast{background:rgba(52,211,153,.1);color:#34D399;border:1px solid rgba(52,211,153,.3)}
-.tier-smart{background:rgba(56,189,248,.1);color:#38BDF8;border:1px solid rgba(56,189,248,.3)}
-.tier-power{background:rgba(251,191,36,.1);color:#FBBF24;border:1px solid rgba(251,191,36,.3)}
-.insight-cards{display:flex;flex-direction:column;gap:16px}
-.insight{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:24px;border-left:3px solid var(--gold)}
-.insight-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.insight-icon{width:36px;height:36px;border-radius:6px;background:rgba(201,168,68,.1);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.insight h4{font-family:'Syne',sans-serif;font-weight:600;font-size:16px}
-.insight p{font-size:13px;color:var(--muted);line-height:1.65}
+/* ── LIVE LAB ── */
+#lab{background:var(--black)}
+#lab h2{color:var(--white)}
+#lab p{color:rgba(255,255,255,.45)}
+.lab-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:40px}
+.lab-pane{background:#0A0A0A;border:1px solid #1E1E1E;border-radius:4px;padding:24px;border-top:2px solid var(--dg)}
+.lp-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#444;margin-bottom:14px}
+textarea.lab-ta{width:100%;height:180px;background:#050505;border:1px solid #1A1A1A;border-radius:3px;color:rgba(255,255,255,.8);font-family:'DM Sans',sans-serif;font-size:14px;padding:16px;resize:none;outline:none;line-height:1.65;transition:border-color .2s}
+textarea.lab-ta:focus{border-color:var(--dg)}
+textarea.lab-ta::placeholder{color:#2A2A2A}
+.model-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.mb{font-family:'DM Mono',monospace;font-size:10px;padding:5px 12px;border-radius:2px;border:1px solid #222;background:transparent;color:#444;cursor:pointer;transition:all .2s;letter-spacing:.04em}
+.mb.on{border-color:var(--dg);color:var(--dg);background:rgba(134,188,37,.08)}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.sc{background:#050505;border:1px solid #1A1A1A;border-radius:3px;padding:16px;text-align:center}
+.sc .sn{font-family:'DM Mono',monospace;font-size:20px;font-weight:500;color:var(--white)}
+.sc.green .sn{color:var(--dg)}
+.sc .sl{font-size:9px;color:#444;letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
+.tok-vis{font-family:'DM Mono',monospace;font-size:12px;line-height:2.2;word-break:break-all;min-height:120px}
+.meter-tick{font-size:11px;color:#333;margin-top:14px;font-family:'DM Mono',monospace;line-height:1.7}
+.lab-callout{background:#111;border-left:3px solid var(--dg);border-radius:0 3px 3px 0;padding:14px 16px;margin-top:16px;font-size:13px;color:#555;line-height:1.6;font-style:italic}
+.lab-callout strong{color:rgba(255,255,255,.6);font-style:normal}
 
-/* ENTERPRISE MODELER */
-#modeler{background:var(--surface);max-width:100%;width:100%;padding:80px 5%}
-.modeler-inner{max-width:1200px;margin:0 auto}
-.modeler-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px;align-items:start}
-.slider-group{margin-bottom:28px}
-.slider-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.slider-label span:first-child{font-size:14px;color:var(--text);font-weight:400}
-.slider-val{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--gold);font-weight:600;background:rgba(201,168,68,.1);padding:2px 10px;border-radius:4px}
-input[type=range]{width:100%;-webkit-appearance:none;height:4px;border-radius:2px;background:var(--border);outline:none}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid var(--bg)}
-.model-select{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:10px 16px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;margin-top:8px;cursor:pointer}
-.results-panel{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:32px;position:sticky;top:70px}
-.result-big{text-align:center;padding:24px 0 28px;border-bottom:1px solid var(--border);margin-bottom:24px}
-.result-big .amount{font-family:'Syne',sans-serif;font-weight:800;font-size:52px;color:var(--gold);line-height:1}
-.result-big .period{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-top:4px}
-.result-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--subtle)}
-.result-row:last-child{border-bottom:none}
-.result-row .rl{font-size:13px;color:var(--muted)}
-.result-row .rv{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);font-weight:600}
-.comparison-bars{margin-top:24px}
-.bar-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px}
-.bar-label span:first-child{color:var(--muted)}
-.bar-label span:last-child{font-family:'IBM Plex Mono',monospace;color:var(--text)}
-.bar-track{height:8px;background:var(--subtle);border-radius:4px;overflow:hidden;margin-bottom:12px}
-.bar-fill{height:100%;border-radius:4px;transition:width .6s ease}
+/* ── FLEET ── */
+.fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.fleet-card{background:var(--white);border:1px solid var(--gray-20);border-radius:4px;padding:28px;position:relative;overflow:hidden;transition:box-shadow .25s,transform .2s}
+.fleet-card:hover{box-shadow:0 6px 28px rgba(0,0,0,.1);transform:translateY(-2px)}
+.fc-accent{position:absolute;top:0;left:0;right:0;height:3px}
+.fc-vehicle{font-size:38px;margin-bottom:16px;display:block}
+.fc-tier{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.dot6{width:6px;height:6px;border-radius:50%;display:inline-block}
+.fc-price{display:flex;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px solid var(--gray-10)}
+.fp-lbl{font-size:9px;color:var(--gray-40);letter-spacing:.1em;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:4px}
+.fp-val{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;color:var(--black)}
+.fc-note{font-size:12px;color:var(--gray-60);margin-top:14px;line-height:1.55}
+.fc-badge{position:absolute;top:14px;right:14px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:2px}
+.fleet-insight{background:var(--dg-wash);border:1px solid rgba(134,188,37,.3);border-radius:4px;padding:28px;margin-top:28px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;border-left:4px solid var(--dg)}
+.fi-head{font-size:13px;font-weight:600;color:var(--black);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.fi-body{font-size:13px;color:var(--gray-60);line-height:1.6}
 
-/* OPTIMIZATION */
-.optim-tabs{display:flex;gap:0;margin-top:40px;border-bottom:1px solid var(--border)}
-.tab-btn{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:12px 24px;border:none;background:transparent;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;margin-bottom:-1px}
-.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
-.tab-pane{display:none;padding:32px 0}
-.tab-pane.active{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-.prompt-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:24px}
-.prompt-text{font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.8;color:var(--muted);white-space:pre-wrap}
-.prompt-meta{display:flex;gap:16px;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
-.pm{text-align:center;flex:1}
-.pm .pn{font-family:'Syne',sans-serif;font-weight:700;font-size:22px}
-.pm .pl{font-size:11px;color:var(--muted);margin-top:2px;letter-spacing:.08em;text-transform:uppercase}
-.savings-box{background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:24px}
-.savings-title{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;color:#34D399;margin-bottom:16px}
-.tip-list{list-style:none;display:flex;flex-direction:column;gap:10px}
-.tip-list li{font-size:13px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;line-height:1.55}
-.tip-list li::before{content:'→';color:var(--gold);flex-shrink:0;font-family:'IBM Plex Mono',monospace}
-.savings-amount{text-align:center;padding:20px;background:rgba(201,168,68,.06);border:1px solid var(--gold-dim);border-radius:8px;margin-top:20px}
-.savings-amount .sa{font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:var(--gold)}
-.savings-amount .sl{font-size:12px;color:var(--muted);margin-top:4px}
+/* ── MODELER ── */
+#modeler{background:var(--gray-05)}
+.modeler-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px;align-items:start}
+.slider-grp{margin-bottom:24px}
+.sl-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.sl-name{font-size:14px;color:var(--black)}
+.sl-val{font-family:'DM Mono',monospace;font-size:12px;color:var(--dg-dark);background:rgba(134,188,37,.12);padding:2px 10px;border-radius:2px;font-weight:500}
+input[type=range]{width:100%;-webkit-appearance:none;height:3px;border-radius:1px;background:var(--gray-20);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--dg);cursor:pointer;border:2px solid var(--white);box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.msel{width:100%;background:var(--white);border:1px solid var(--gray-20);color:var(--black);padding:10px 14px;border-radius:3px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;cursor:pointer;margin-top:8px}
+.msel:focus{border-color:var(--dg)}
+.results-card{background:var(--white);border:1px solid var(--gray-20);border-radius:4px;padding:32px;position:sticky;top:64px;border-top:3px solid var(--dg)}
+.rc-big{text-align:center;padding:24px 0 28px;border-bottom:1px solid var(--gray-10);margin-bottom:20px}
+.rc-big .amount{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;color:var(--dg-dark);line-height:1}
+.rc-big .period{font-family:'DM Mono',monospace;font-size:10px;color:var(--gray-40);letter-spacing:.18em;text-transform:uppercase;margin-top:6px}
+.rc-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray-10);font-size:13px}
+.rc-row:last-of-type{border-bottom:none}
+.rl{color:var(--gray-60)}.rv{font-family:'DM Mono',monospace;font-weight:500;color:var(--black)}
+.rv.green{color:var(--dg-dark)}
+.bar-section{margin-top:24px}
+.bar-lbl{display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px}
+.bar-track{height:6px;background:var(--gray-10);border-radius:2px;overflow:hidden;margin-bottom:10px}
+.bar-fill{height:100%;border-radius:2px;transition:width .5s ease}
+.analogy-box{background:var(--dg-wash);border:1px solid rgba(134,188,37,.25);border-radius:3px;padding:16px 20px;margin-top:20px;border-left:3px solid var(--dg)}
+.ab-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--dg-dark);margin-bottom:8px}
+.ab-text{font-size:13px;color:var(--gray-60);line-height:1.6;font-style:italic}
 
-/* CONTEXT WINDOW */
-.cw-container{margin-top:40px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px}
-.cw-bar-wrap{background:var(--bg);border:1px solid var(--border);border-radius:6px;height:48px;position:relative;overflow:hidden;margin:24px 0}
-.cw-segment{height:100%;display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.05em;transition:width .5s ease;overflow:hidden;white-space:nowrap}
-.cw-legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px}
-.cw-leg-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+/* ── OPTIMIZATION ── */
+.opt-tabs{display:flex;gap:0;border-bottom:1px solid var(--gray-20);margin-top:40px}
+.ot{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:12px 22px;border:none;background:transparent;color:var(--gray-60);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+.ot.on{color:var(--dg-dark);border-bottom-color:var(--dg)}
+.tab-body{display:none;padding:32px 0;gap:40px}
+.tab-body.on{display:grid;grid-template-columns:1fr 1fr}
+.pb{background:var(--gray-05);border:1px solid var(--gray-10);border-radius:4px;padding:28px}
+.pb-head{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px}
+.pb-text{font-family:'DM Mono',monospace;font-size:12px;line-height:1.9;color:var(--gray-60);white-space:pre-wrap}
+.pb-meta{display:flex;gap:0;margin-top:20px;padding-top:16px;border-top:1px solid var(--gray-10)}
+.pm{text-align:center;flex:1;border-right:1px solid var(--gray-10)}
+.pm:last-child{border-right:none}
+.pn{font-family:'Playfair Display',serif;font-weight:700;font-size:26px;margin-bottom:2px}
+.pl{font-size:10px;color:var(--gray-40);letter-spacing:.1em;text-transform:uppercase;font-family:'DM Mono',monospace}
+.sb{border:1px solid;border-radius:4px;padding:28px}
+.sb-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:16px}
+.tips{list-style:none;display:flex;flex-direction:column;gap:9px}
+.tips li{font-size:13px;color:var(--gray-60);display:flex;gap:10px;align-items:flex-start;line-height:1.55}
+.tips li::before{content:'→';color:var(--dg);flex-shrink:0;font-family:'DM Mono',monospace;margin-top:1px}
+.savings-big{text-align:center;padding:20px;border-radius:3px;margin-top:20px}
+.sb-num{font-family:'Playfair Display',serif;font-size:34px;font-weight:900;line-height:1}
+.sb-lab{font-size:12px;margin-top:4px;font-family:'DM Mono',monospace;letter-spacing:.06em;color:var(--gray-60)}
+
+/* ── CONTEXT WINDOW ── */
+#context{background:var(--white)}
+.cw-wrap{background:var(--gray-05);border:1px solid var(--gray-20);border-radius:4px;padding:32px;margin-top:40px}
+.cw-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.cw-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray-60)}
+.cw-used{font-family:'DM Mono',monospace;font-size:12px;color:var(--dg-dark);font-weight:500}
+.cw-bar{display:flex;height:52px;border-radius:3px;overflow:hidden;border:1px solid var(--gray-20);margin:10px 0;background:var(--gray-10)}
+.cw-seg{height:100%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.08em;transition:width .45s ease;overflow:hidden;white-space:nowrap}
+.cw-leg{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0 24px}
+.cw-li{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--gray-60)}
 .cw-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
-.cw-slider-row{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:28px}
+.cw-sliders{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
+.cw-warn{border-radius:3px;padding:12px 16px;margin-top:16px;font-family:'DM Mono',monospace;font-size:12px;line-height:1.6;display:none}
+.cab-mem{background:var(--dg-wash);border:1px solid rgba(134,188,37,.3);border-radius:4px;padding:24px;margin-top:24px;border-left:4px solid var(--dg)}
+.cab-mem h4{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:10px}
 
-/* FOOTER */
-footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 5%;text-align:center}
-footer p{font-size:12px;color:var(--muted);letter-spacing:.05em;line-height:1.8}
-.footer-brand{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--gold);margin-bottom:12px}
+/* ── SCROLL REVEAL ── */
+.r{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.r.v{opacity:1;transform:none}
 
-/* DIVIDER */
-.divider{border:none;border-top:1px solid var(--border);max-width:1200px;margin:0 auto}
-
-/* SCROLL REVEAL */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:none}
+/* ── FOOTER ── */
+footer{background:var(--black);color:rgba(255,255,255,.35);padding:48px 5%;text-align:center}
+.footer-logo{font-family:'DM Sans',sans-serif;font-weight:700;font-size:18px;color:var(--white);margin-bottom:6px;display:flex;align-items:center;justify-content:center;gap:2px}
+.footer-logo .dot{color:var(--dg);font-size:24px;line-height:1}
 
 @media(max-width:900px){
-  .hero-grid,.lab-layout,.economy-grid,.modeler-layout,.tab-pane.active{grid-template-columns:1fr}
-  .concept-grid{grid-template-columns:1fr}
-  .cw-slider-row{grid-template-columns:1fr}
+  .hero-inner,.split,.io-split,.lab-grid,.fleet-insight,.modeler-grid,.tab-body.on,.cw-sliders{grid-template-columns:1fr}
+  .io-col:first-child{border-right:none;border-bottom:1px solid var(--gray-10)}
+  .fleet-grid{grid-template-columns:1fr 1fr}
   nav .nav-links{display:none}
 }
+@media(max-width:600px){.fleet-grid,.stats-row,.fleet-insight,.trio{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="nav-brand">Token Intelligence</div>
+  <div class="nav-logo">TokenRide<span class="dot">.</span></div>
   <div class="nav-links">
-    <a href="#anatomy">Anatomy</a>
-    <a href="#lab">Token Lab</a>
-    <a href="#economy">Economy</a>
-    <a href="#modeler">Cost Modeler</a>
-    <a href="#optimize">Optimize</a>
-    <a href="#context">Context Window</a>
+    <a href="#meter">The Meter</a>
+    <a href="#io">Directions vs Miles</a>
+    <a href="#lab">Fare Calculator</a>
+    <a href="#fleet">Choose Your Cab</a>
+    <a href="#modeler">Fleet Bill</a>
+    <a href="#optimize">Smarter Directions</a>
+    <a href="#context">Driver's Memory</a>
   </div>
-  <span class="badge">Deloitte Partners</span>
+  <span class="nav-pill">Deloitte Partners</span>
 </nav>
 
-<!-- HERO -->
+<!-- ══════════════ HERO ══════════════ -->
 <div id="hero">
-  <div class="hero-bg-grid"></div>
-  <div class="hero-grid">
+  <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow">AI Literacy Series</div>
-      <h1 class="hero-title">TOKENS<br><span class="highlight">FOR</span><br>PARTNERS</h1>
-      <p class="hero-sub">Every interaction with an AI model has a measurable, billable unit. Understanding tokens is understanding AI economics — and the competitive edge your clients need.</p>
-      <div class="stat-row">
-        <div class="stat-item">
-          <div class="stat-num">4</div>
-          <div class="stat-label">avg chars per token</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">100×</div>
-          <div class="stat-label">cost spread across models</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">4×</div>
-          <div class="stat-label">output costs more</div>
-        </div>
+      <div class="eyebrow" style="color:rgba(134,188,37,.7)">AI Literacy Series — Partners Edition</div>
+      <h1 style="color:var(--white)">Every<br>AI call<br>is a<br><em style="color:var(--dg)">cab ride.</em></h1>
+      <p class="hero-sub">The moment you send a message to an AI, <strong>the meter starts running.</strong> Every fragment of text — yours and the AI's — clicks the counter. This guide teaches you to read the meter, choose the right vehicle, and send smarter directions.<br><br><strong>Welcome to Tokens for Partners.</strong></p>
+      <div class="hero-chips">
+        <span class="hero-chip chip-green">Token = one meter click</span>
+        <span class="hero-chip chip-green">Directions = input tokens</span>
+        <span class="hero-chip chip-green">Miles driven = output tokens</span>
+        <span class="hero-chip chip-dim">~4 characters per click</span>
+        <span class="hero-chip chip-dim">100× price spread across models</span>
       </div>
     </div>
-    <div class="token-burst" id="tokenBurst">
-      <div class="burst-word" id="burstWord" style="color:var(--muted)"></div>
-      <div class="token-chips" id="tokenChips"></div>
-      <div class="label-count" id="tokenCountLabel"></div>
-    </div>
-  </div>
-</div>
-
-<!-- ANATOMY -->
-<section id="anatomy">
-  <div class="section-tag">Module 01 — Foundations</div>
-  <h2>What exactly <em style="color:var(--gold);font-style:italic">is</em> a token?</h2>
-  <p style="max-width:600px">Not a word. Not a character. A token is a <strong style="color:var(--text)">sub-word unit</strong> — the atomic piece of text that language models process. Understanding this unlocks everything about AI costs, capabilities, and strategy.</p>
-
-  <div class="concept-grid">
-    <div class="concept-card reveal">
-      <div class="concept-num">01</div>
-      <div class="concept-icon">📝</div>
-      <h3>Tokens ≠ Words</h3>
-      <p>Common short words are 1 token. Long or rare words split into multiple tokens. The word "Deloitte" is likely 2 tokens; "AI" is 1.</p>
-      <div class="token-example">
-        <span class="te" style="background:rgba(255,107,107,.15);color:#FF6B6B;border-color:rgba(255,107,107,.3)">Deloi</span>
-        <span class="te" style="background:rgba(78,205,196,.15);color:#4ECDC4;border-color:rgba(78,205,196,.3)">tte</span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);padding:3px 4px">= 2 tokens</span>
-      </div>
-      <div class="token-example">
-        <span class="te" style="background:rgba(69,183,209,.15);color:#45B7D1;border-color:rgba(69,183,209,.3)">AI</span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);padding:3px 4px">= 1 token</span>
-      </div>
-    </div>
-    <div class="concept-card reveal">
-      <div class="concept-num">02</div>
-      <div class="concept-icon">💰</div>
-      <h3>Tokens = Dollars</h3>
-      <p>Every token you send (input) and receive (output) is billed. A 3-page consulting brief is ~2,000 tokens. At scale, this adds up — or can be optimized dramatically.</p>
-      <div class="token-example" style="margin-top:20px">
-        <span class="te" style="background:rgba(56,189,248,.12);color:#38BDF8;border-color:rgba(56,189,248,.3);font-size:13px;padding:5px 12px">1M tokens ≈ $3.00</span>
-        <span class="te" style="background:rgba(251,191,36,.12);color:#FBBF24;border-color:rgba(251,191,36,.3);font-size:13px;padding:5px 12px">Claude Sonnet</span>
-      </div>
-    </div>
-    <div class="concept-card reveal">
-      <div class="concept-num">03</div>
-      <div class="concept-icon">🔄</div>
-      <h3>Input vs Output</h3>
-      <p>What you <em>send</em> to the model (prompt, context, documents) are input tokens. What it <em>generates</em> back are output tokens — and they cost 4× more to produce.</p>
-      <div class="token-example" style="margin-top:16px;flex-direction:column;gap:8px">
-        <div style="display:flex;align-items:center;gap:10px">
-          <span class="te" style="background:rgba(56,189,248,.12);color:#38BDF8;border-color:rgba(56,189,248,.3)">INPUT</span>
-          <span style="font-size:13px;color:var(--muted)">→ $3/1M tokens</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px">
-          <span class="te" style="background:rgba(255,107,107,.12);color:#FF6B6B;border-color:rgba(255,107,107,.3)">OUTPUT</span>
-          <span style="font-size:13px;color:var(--muted)">→ $15/1M tokens</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-top:48px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;border-left:4px solid var(--gold)" class="reveal">
-    <div class="section-tag" style="margin-bottom:12px">The Partner Insight</div>
-    <h3 style="font-size:22px;margin-bottom:12px">The "Metered Taxi" Mental Model</h3>
-    <p style="max-width:720px">Think of tokens like a taxi meter that runs on <strong style="color:var(--text)">both ends of the trip</strong>. You pay to tell the driver where to go (input tokens) AND you pay for every mile of the route (output tokens). A verbose, poorly structured prompt is like giving the driver a 10-minute verbal briefing before starting. Expert clients write clear, precise instructions — and get charged accordingly.</p>
-    <div style="display:flex;gap:24px;margin-top:24px;flex-wrap:wrap">
-      <div style="flex:1;min-width:200px;background:var(--bg);border-radius:8px;padding:20px;border:1px solid var(--border)">
-        <div style="font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px">Typical Email to AI</div>
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:28px;color:var(--electric)">~400</div>
-        <div style="font-size:13px;color:var(--muted)">tokens input</div>
-      </div>
-      <div style="flex:1;min-width:200px;background:var(--bg);border-radius:8px;padding:20px;border:1px solid var(--border)">
-        <div style="font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px">3-Page Document Context</div>
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:28px;color:var(--electric)">~2,400</div>
-        <div style="font-size:13px;color:var(--muted)">tokens input</div>
-      </div>
-      <div style="flex:1;min-width:200px;background:var(--bg);border-radius:8px;padding:20px;border:1px solid var(--border)">
-        <div style="font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px">Full Annual Report</div>
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:28px;color:var(--electric)">~80,000</div>
-        <div style="font-size:13px;color:var(--muted)">tokens input</div>
-      </div>
-      <div style="flex:1;min-width:200px;background:var(--bg);border-radius:8px;padding:20px;border:1px solid var(--border)">
-        <div style="font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px">Agent Reasoning Loop (10 steps)</div>
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:28px;color:var(--t1)">10×</div>
-        <div style="font-size:13px;color:var(--muted)">token cost multiplier</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- TOKEN LAB -->
-<div id="lab">
-  <div class="lab-inner">
-    <div class="section-tag">Module 02 — Interactive Lab</div>
-    <h2>Live Token Visualizer</h2>
-    <p style="max-width:600px">Type or paste any text. Watch it decompose into tokens in real time. Select a model to see the actual cost of your words.</p>
-
-    <div class="lab-layout">
-      <div class="lab-input-area">
-        <div class="output-label">Your Text</div>
-        <textarea class="lab-textarea" id="labInput" placeholder="Paste a client email, a prompt, or any text here...
-Try: 'Please provide a comprehensive strategic assessment of the implications of generative AI adoption across our enterprise operations.'"></textarea>
-        <div style="font-size:12px;color:var(--muted);margin-top:10px;margin-bottom:14px">Select a model to calculate cost:</div>
-        <div class="model-selector" id="modelSelector">
-          <button class="model-btn active" data-model="sonnet" onclick="selectModel(this)">Claude Sonnet</button>
-          <button class="model-btn" data-model="haiku" onclick="selectModel(this)">Claude Haiku</button>
-          <button class="model-btn" data-model="gpt4o" onclick="selectModel(this)">GPT-4o</button>
-          <button class="model-btn" data-model="gpt4omini" onclick="selectModel(this)">GPT-4o mini</button>
-          <button class="model-btn" data-model="o1" onclick="selectModel(this)">o1</button>
-          <button class="model-btn" data-model="geminiflash" onclick="selectModel(this)">Gemini Flash</button>
-        </div>
-        <div class="lab-stats" style="margin-top:20px">
-          <div class="stat-card">
-            <div class="num" id="statWords">0</div>
-            <div class="lbl">Words</div>
+    <div>
+      <div class="meter-display">
+        <div class="meter-header">AI TAXI METER — LIVE</div>
+        <div class="meter-fare" id="heroFare">$0.0000000</div>
+        <div class="meter-subrow">
+          <div class="meter-col">
+            <div class="mc-val" id="heroIn">0</div>
+            <div class="mc-lbl">Direction tokens</div>
           </div>
-          <div class="stat-card">
-            <div class="num" id="statTokens">0</div>
-            <div class="lbl">Tokens</div>
+          <div class="meter-col">
+            <div class="mc-val" id="heroOut">0</div>
+            <div class="mc-lbl">Miles driven</div>
           </div>
-          <div class="stat-card cost-card">
-            <div class="num" id="statCost">$0.00</div>
-            <div class="lbl">Input Cost</div>
+          <div class="meter-col">
+            <div class="mc-val" id="heroTotal">0</div>
+            <div class="mc-lbl">Total clicks</div>
           </div>
         </div>
-        <div style="font-size:11px;color:var(--muted);margin-top:12px;font-family:'IBM Plex Mono',monospace;line-height:1.6" id="costBreakdown"></div>
-      </div>
-
-      <div class="lab-input-area">
-        <div class="output-label">Token Visualization</div>
-        <div class="lab-output" id="labOutput">
-          <div style="color:var(--muted);font-size:13px;font-family:'IBM Plex Mono',monospace;opacity:.5">← Start typing to see tokens appear...</div>
+        <div class="meter-status">
+          <span id="heroStatus">Meter running — watching a typical consulting query...</span>
         </div>
-        <div style="margin-top:16px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px">
-          <div style="font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;font-family:'IBM Plex Mono',monospace">What you're seeing</div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px">
-            <div style="font-size:12px;color:var(--muted);line-height:1.6">Each <span style="background:rgba(255,107,107,.15);color:#FF6B6B;padding:1px 6px;border-radius:3px;font-family:'IBM Plex Mono',monospace">colored block</span> is one token. Spaces often attach to the next word. Long technical terms split into sub-pieces. That's Byte Pair Encoding (BPE) — the algorithm behind most LLM tokenizers.</div>
-          </div>
-        </div>
+        <div class="hero-typing" id="heroTyping"></div>
       </div>
     </div>
   </div>
 </div>
 
-<hr class="divider">
-
-<!-- THE ECONOMY -->
-<section id="economy">
-  <div class="section-tag">Module 03 — Pricing Intelligence</div>
-  <h2>The Token Economy</h2>
-  <p style="max-width:600px">Model choice is the most powerful lever in AI cost strategy. The difference between the cheapest and most expensive frontier model is over <strong style="color:var(--gold)">800×</strong>.</p>
-
-  <div class="economy-grid">
-    <div>
-      <div style="font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;margin-bottom:16px">Frontier Model Pricing (per 1M tokens)</div>
-      <table class="model-table">
-        <tr>
-          <th>Model</th>
-          <th>Input</th>
-          <th>Output</th>
-          <th>Tier</th>
-        </tr>
-        <tr>
-          <td>Gemini 1.5 Flash</td>
-          <td class="input-val">$0.075</td>
-          <td class="output-val">$0.30</td>
-          <td><span class="tier-badge tier-fast">Fast</span></td>
-        </tr>
-        <tr>
-          <td>Claude Haiku 3.5</td>
-          <td class="input-val">$0.80</td>
-          <td class="output-val">$4.00</td>
-          <td><span class="tier-badge tier-fast">Fast</span></td>
-        </tr>
-        <tr>
-          <td>GPT-4o mini</td>
-          <td class="input-val">$0.15</td>
-          <td class="output-val">$0.60</td>
-          <td><span class="tier-badge tier-fast">Fast</span></td>
-        </tr>
-        <tr>
-          <td>Claude Sonnet 3.7</td>
-          <td class="input-val">$3.00</td>
-          <td class="output-val">$15.00</td>
-          <td><span class="tier-badge tier-smart">Smart</span></td>
-        </tr>
-        <tr>
-          <td>GPT-4o</td>
-          <td class="input-val">$2.50</td>
-          <td class="output-val">$10.00</td>
-          <td><span class="tier-badge tier-smart">Smart</span></td>
-        </tr>
-        <tr>
-          <td>o1 / o3</td>
-          <td class="input-val">$15.00</td>
-          <td class="output-val">$60.00</td>
-          <td><span class="tier-badge tier-power">Power</span></td>
-        </tr>
-        <tr>
-          <td>Claude Opus 4</td>
-          <td class="input-val">$15.00</td>
-          <td class="output-val">$75.00</td>
-          <td><span class="tier-badge tier-power">Power</span></td>
-        </tr>
-      </table>
-      <div style="font-size:11px;color:var(--muted);margin-top:12px;font-style:italic">* Prices approximate. Enterprise agreements vary significantly.</div>
-    </div>
-    <div class="insight-cards">
-      <div class="insight">
-        <div class="insight-head">
-          <div class="insight-icon">🎯</div>
-          <h4>Right-size the model</h4>
-        </div>
-        <p>Routing simple tasks (data extraction, formatting) to fast/cheap models and complex reasoning to power models can cut costs by 60–80% with no quality loss. This is "model tiering" — a core AI strategy.</p>
-      </div>
-      <div class="insight">
-        <div class="insight-head">
-          <div class="insight-icon">📦</div>
-          <h4>Caching = free tokens</h4>
-        </div>
-        <p>Most providers offer <strong style="color:var(--text)">prompt caching</strong>: if you send the same system prompt or context repeatedly (e.g., a 10K-token policy document), you pay 90% less for those cached tokens on repeat calls.</p>
-      </div>
-      <div class="insight">
-        <div class="insight-head">
-          <div class="insight-icon">🔁</div>
-          <h4>Agents multiply costs</h4>
-        </div>
-        <p>An AI agent that reasons in loops (plan → act → observe → repeat) processes tokens at <strong style="color:var(--t1)">every step</strong>. A 10-step agent loop multiplies your token bill by 10×. Agentic architectures require cost-aware design.</p>
-      </div>
-      <div class="insight">
-        <div class="insight-head">
-          <div class="insight-icon">📄</div>
-          <h4>The system prompt tax</h4>
-        </div>
-        <p>Every API call includes a system prompt (persona, rules, context). A 2,000-token system prompt sent 50,000 times/month = <strong style="color:var(--gold)">100M tokens</strong> just in overhead. Optimize it once, save millions of tokens.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ENTERPRISE MODELER -->
-<div id="modeler">
-  <div class="modeler-inner">
-    <div class="section-tag">Module 04 — Enterprise Cost Modeler</div>
-    <h2>Build Your Client's Token Budget</h2>
-    <p style="max-width:600px">Model real-world AI deployment costs. Adjust the sliders to match a client scenario and see the annual spend — before and after optimization.</p>
-
-    <div class="modeler-layout">
+<!-- ══════════════ THE METER ══════════════ -->
+<section id="meter">
+  <div class="wrap">
+    <div class="eyebrow">Chapter 1 — The Meter</div>
+    <div class="split">
       <div>
-        <h3 style="margin-bottom:24px;font-size:16px;color:var(--muted);font-weight:400;text-transform:uppercase;letter-spacing:.1em;font-family:'IBM Plex Mono',monospace">Scenario Inputs</h3>
-
-        <div class="slider-group">
-          <div class="slider-label">
-            <span>Daily AI Interactions (calls/day)</span>
-            <span class="slider-val" id="v-calls">10,000</span>
-          </div>
-          <input type="range" min="100" max="500000" step="100" value="10000" id="s-calls" oninput="updateModeler()">
+        <h2>How the meter actually clicks</h2>
+        <p style="margin-top:16px">You'd expect the taxi meter to tick per word. It doesn't. It ticks per <strong style="color:var(--black)">sub-word fragment</strong> — a unit called a <em>token</em>, decided by the model's internal vocabulary. Short common words cost one click. Long or rare words split into multiple clicks.</p>
+        <div class="concept-pull r">
+          <div class="cq">"The meter doesn't care about your grammar. It counts syllable-sized chunks of text — whether you're writing a polished brief or a typo-riddled note."</div>
+          <div class="ca">Token Principle #1</div>
         </div>
-
-        <div class="slider-group">
-          <div class="slider-label">
-            <span>Avg. Input Tokens per Call</span>
-            <span class="slider-val" id="v-input">800</span>
-          </div>
-          <input type="range" min="50" max="10000" step="50" value="800" id="s-input" oninput="updateModeler()">
+        <p>This matters because verbose, wordy prompts rack up the meter faster — not just in word count, but because complex vocabulary splits into more fragments. <strong style="color:var(--black)">Technical jargon, long words, and multiple languages all cost more per character.</strong></p>
+        <div class="token-strip r" style="margin-top:24px">
+          <span style="font-size:12px;color:var(--gray-60);font-family:'DM Mono',monospace">Hover each block — one colour = one meter click:</span>
         </div>
-
-        <div class="slider-group">
-          <div class="slider-label">
-            <span>Avg. Output Tokens per Call</span>
-            <span class="slider-val" id="v-output">400</span>
-          </div>
-          <input type="range" min="50" max="4000" step="50" value="400" id="s-output" oninput="updateModeler()">
+        <div class="token-strip r" style="margin-top:10px">
+          <span class="tok-chip" style="background:rgba(134,188,37,.15);color:var(--dg-dark);border-color:rgba(134,188,37,.4)">part</span>
+          <span class="tok-chip" style="background:rgba(46,125,50,.12);color:#2E7D32;border-color:rgba(46,125,50,.3)">ner</span>
+          <span style="font-size:11px;color:var(--gray-40);padding:0 4px;font-family:'DM Mono',monospace">= 2 clicks</span>
         </div>
-
-        <div class="slider-group">
-          <div class="slider-label">
-            <span>Agent Loop Multiplier</span>
-            <span class="slider-val" id="v-loop">1×</span>
-          </div>
-          <input type="range" min="1" max="15" step="1" value="1" id="s-loop" oninput="updateModeler()">
+        <div class="token-strip r" style="margin-top:6px">
+          <span class="tok-chip" style="background:rgba(2,119,189,.1);color:#0277BD;border-color:rgba(2,119,189,.3)">Deloi</span>
+          <span class="tok-chip" style="background:rgba(77,122,0,.1);color:#4D7A00;border-color:rgba(77,122,0,.3)">tte</span>
+          <span style="font-size:11px;color:var(--gray-40);padding:0 4px;font-family:'DM Mono',monospace">= 2 clicks</span>
         </div>
-
-        <div class="slider-group">
-          <div class="slider-label">
-            <span>Select Model</span>
+        <div class="token-strip r" style="margin-top:6px">
+          <span class="tok-chip" style="background:rgba(0,131,143,.1);color:#00838F;border-color:rgba(0,131,143,.3)">token</span>
+          <span class="tok-chip" style="background:rgba(106,27,154,.1);color:#6A1B9A;border-color:rgba(106,27,154,.3)">ization</span>
+          <span style="font-size:11px;color:var(--gray-40);padding:0 4px;font-family:'DM Mono',monospace">= 2 clicks</span>
+        </div>
+        <div class="token-strip r" style="margin-top:6px">
+          <span class="tok-chip" style="background:rgba(198,40,40,.1);color:#C62828;border-color:rgba(198,40,40,.3)">AI</span>
+          <span style="font-size:11px;color:var(--gray-40);padding:0 4px;font-family:'DM Mono',monospace">= 1 click</span>
+        </div>
+        <div class="token-strip r" style="margin-top:6px">
+          <span class="tok-chip" style="background:rgba(230,81,0,.1);color:#E65100;border-color:rgba(230,81,0,.3)">implement</span>
+          <span class="tok-chip" style="background:rgba(134,188,37,.15);color:var(--dg-dark);border-color:rgba(134,188,37,.4)">ation</span>
+          <span style="font-size:11px;color:var(--gray-40);padding:0 4px;font-family:'DM Mono',monospace">= 2 clicks</span>
+        </div>
+      </div>
+      <div>
+        <div class="click-meter r">
+          <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#333;margin-bottom:16px">Live Word Splitter — Watch the meter click</div>
+          <div class="cm-word" id="cmWord">—</div>
+          <div class="cm-chips" id="cmChips"></div>
+          <div class="cm-bottom">
+            <div>
+              <div class="cm-count" id="cmCount">—</div>
+              <div class="cm-label">meter clicks</div>
+            </div>
+            <button class="cm-btn" onclick="nextWord()">Next word →</button>
           </div>
-          <select class="model-select" id="s-model" onchange="updateModeler()">
-            <option value="gpt4omini">GPT-4o mini ($0.15/$0.60 per 1M)</option>
-            <option value="geminiflash">Gemini 1.5 Flash ($0.075/$0.30 per 1M)</option>
-            <option value="haiku">Claude Haiku 3.5 ($0.80/$4.00 per 1M)</option>
-            <option value="sonnet" selected>Claude Sonnet 3.7 ($3.00/$15.00 per 1M)</option>
-            <option value="gpt4o">GPT-4o ($2.50/$10.00 per 1M)</option>
-            <option value="o1">o1/o3 ($15.00/$60.00 per 1M)</option>
+        </div>
+        <div class="stats-box r">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--dg-dark)">⚡ The Cab Rule of Thumb</div>
+          <div class="sb-grid">
+            <div class="sb-item"><div class="sb-num">~4</div><div class="sb-lbl">characters per token</div></div>
+            <div class="sb-item"><div class="sb-num">~0.75</div><div class="sb-lbl">words per token</div></div>
+            <div class="sb-item"><div class="sb-num">1K</div><div class="sb-lbl">tokens ≈ 1 page</div></div>
+            <div class="sb-item"><div class="sb-num">80K</div><div class="sb-lbl">tokens ≈ annual report</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════ INPUT vs OUTPUT ══════════════ -->
+<section id="io">
+  <div class="wrap">
+    <div class="eyebrow">Chapter 2 — Directions vs Miles</div>
+    <h2>The two sides of every fare</h2>
+    <p style="max-width:600px;margin-top:14px">Every cab ride has two costs: the briefing before you set off, and the actual miles driven. AI works the same way. What you <em>send</em> to the model costs one rate. What it <em>generates back</em> costs another — and it's significantly higher.</p>
+
+    <div class="io-split r">
+      <div class="io-col">
+        <div class="io-label">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--black);display:inline-block"></span>
+          Input Tokens — Your Directions
+        </div>
+        <div class="io-price" style="color:var(--black)">$3<span style="font-size:20px;font-weight:400;color:var(--gray-60)">/1M tokens</span></div>
+        <div class="io-sub">Everything you <em>send</em>: your prompt, context documents, system instructions, conversation history.</div>
+        <div class="io-analogy">
+          <span class="tag" style="color:var(--gray-60)">🗺 The Analogy</span>
+          <strong>Giving directions to the driver.</strong> Whether you hand them a printed map, read off a long address, or ramble for five minutes — it's all input. The cab is still stationary. The meter is ticking, but slowly.
+        </div>
+      </div>
+      <div class="io-col" style="border-top:3px solid var(--dg)">
+        <div class="io-label" style="color:var(--dg-dark)">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--dg);display:inline-block"></span>
+          Output Tokens — Miles Driven
+        </div>
+        <div class="io-price" style="color:var(--dg-dark)">$15<span style="font-size:20px;font-weight:400;color:var(--dg-dark)">/1M tokens</span></div>
+        <div class="io-sub">Everything the model <em>generates</em>: its analysis, reasoning, response. This is where real compute happens.</div>
+        <div class="io-analogy" style="background:var(--dg-wash);border-color:rgba(134,188,37,.3)">
+          <span class="tag" style="color:var(--dg-dark)">🚕 The Analogy</span>
+          <strong>The cab actually driving.</strong> The engine turns over. Fuel burns. Gears shift. The model is doing real work — reasoning, composing, calculating. That work costs more per kilometre than your briefing cost.
+        </div>
+      </div>
+    </div>
+
+    <div class="ratio-card r">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gray-60)">Cost ratio — Claude Sonnet 3.7</span>
+        <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--dg-dark);background:var(--dg-wash);padding:3px 10px;border-radius:2px">Output is 5× more expensive than Input</span>
+      </div>
+      <div class="rb-track">
+        <div class="rb-in">INPUT $3</div>
+        <div class="rb-out">OUTPUT $15 ←&nbsp;&nbsp;5× premium</div>
+      </div>
+      <div class="trio">
+        <div class="trio-item">
+          <div class="trio-tag">Consulting email prompt</div>
+          <div class="trio-num">~400</div>
+          <div class="trio-sub">tokens · short directions</div>
+        </div>
+        <div class="trio-item">
+          <div class="trio-tag">Full analysis response</div>
+          <div class="trio-num">~800</div>
+          <div class="trio-sub">tokens · 8 km driven</div>
+        </div>
+        <div class="trio-item" style="border-color:rgba(198,40,40,.2);background:rgba(198,40,40,.03)">
+          <div class="trio-tag" style="color:#C62828">AI Agent (10-step loop)</div>
+          <div class="trio-num" style="color:#C62828">10×</div>
+          <div class="trio-sub">cost multiplier · 10 round trips</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-pull r" style="margin-top:32px">
+      <div class="cq">"An AI agent that reasons in loops — plan, act, observe, repeat — sends the cab on multiple round trips for a single errand. Each loop re-runs the meter from zero. Design your agents to take the direct route."</div>
+      <div class="ca">Strategic Implication — Agentic AI Architecture</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════ LIVE LAB ══════════════ -->
+<section id="lab" style="padding:80px 0;background:var(--black)">
+  <div class="wrap">
+    <div class="eyebrow" style="color:rgba(134,188,37,.6)">Chapter 3 — The Fare Calculator</div>
+    <h2 style="color:var(--white)">Watch the meter tick in real time</h2>
+    <p>Type any text — a client email, a prompt, a paragraph from a report. See exactly how many meter clicks it generates, and what it costs across different vehicle classes.</p>
+    <div class="lab-grid">
+      <div class="lab-pane">
+        <div class="lp-lbl">Your directions to the driver</div>
+        <textarea class="lab-ta" id="labTa" placeholder="Type or paste anything here — an email, a prompt, a client brief..."></textarea>
+        <div style="font-size:10px;color:#333;margin-top:10px;margin-bottom:10px;font-family:'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase">Select vehicle class to see fare:</div>
+        <div class="model-row" id="modelRow">
+          <button class="mb" data-m="gemini" onclick="selModel(this)">🛺 Gemini Flash</button>
+          <button class="mb" data-m="haiku" onclick="selModel(this)">🚗 Haiku</button>
+          <button class="mb on" data-m="sonnet" onclick="selModel(this)">🚕 Sonnet</button>
+          <button class="mb" data-m="gpt4o" onclick="selModel(this)">🚙 GPT-4o</button>
+          <button class="mb" data-m="o1" onclick="selModel(this)">🏎 o1/o3</button>
+        </div>
+        <div class="stats-row" style="margin-top:16px">
+          <div class="sc"><div class="sn" id="stWords">0</div><div class="sl">Words</div></div>
+          <div class="sc"><div class="sn" id="stToks">0</div><div class="sl">Tokens</div></div>
+          <div class="sc green"><div class="sn" id="stCost">$0.00</div><div class="sl">Input fare</div></div>
+        </div>
+        <div class="meter-tick" id="tickInfo"></div>
+      </div>
+      <div class="lab-pane">
+        <div class="lp-lbl">Token-by-token meter view</div>
+        <div class="tok-vis" id="tokVis" style="color:#1E1E1E">← Start typing your directions...</div>
+        <div class="lab-callout" id="labCallout">
+          Each <strong>coloured fragment</strong> is one meter click. Spaces usually attach to the next fragment. Notice how long words split — that's the tokenizer working under the hood, deciding where each click lands.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════ FLEET ══════════════ -->
+<section id="fleet" style="background:var(--white)">
+  <div class="wrap">
+    <div class="eyebrow">Chapter 4 — Choose Your Vehicle</div>
+    <h2>Not every errand needs a Rolls-Royce</h2>
+    <p style="max-width:600px;margin-top:14px">The single most powerful lever in AI cost strategy is <strong style="color:var(--black)">model selection</strong>. Just as you wouldn't charter a helicopter to fetch a file from the next office, you shouldn't use the most expensive model for every task. Match the vehicle to the errand.</p>
+
+    <div class="fleet-grid">
+      <div class="fleet-card r">
+        <div class="fc-accent" style="background:#34D399"></div>
+        <span class="fc-vehicle">🛺</span>
+        <div class="fc-tier"><span class="dot6" style="background:#34D399"></span><span style="color:#2E7D32">Fast &amp; Cheap</span></div>
+        <h3>The Auto-Rickshaw</h3>
+        <p style="font-size:13px;color:var(--gray-60)">Gemini Flash / GPT-4o mini. Nimble, affordable, perfect for short predictable routes. Not glamorous — but brutally efficient at scale.</p>
+        <div class="fc-note"><strong style="color:var(--black)">Best for:</strong> Classification, data extraction, formatting, summarisation of structured data, high-volume repetitive tasks.</div>
+        <div class="fc-price">
+          <div><div class="fp-lbl">Input</div><div class="fp-val" style="color:#2E7D32">$0.075–0.15</div></div>
+          <div><div class="fp-lbl">Output</div><div class="fp-val" style="color:#2E7D32">$0.30–0.60</div></div>
+          <div><div class="fp-lbl">per 1M tokens</div></div>
+        </div>
+        <div class="fc-badge" style="background:rgba(52,211,153,.1);color:#2E7D32;border:1px solid rgba(52,211,153,.3)">Highest volume</div>
+      </div>
+      <div class="fleet-card r" style="border-color:var(--dg);border-width:2px">
+        <div class="fc-accent" style="background:var(--dg)"></div>
+        <span class="fc-vehicle">🚕</span>
+        <div class="fc-tier"><span class="dot6" style="background:var(--dg)"></span><span style="color:var(--dg-dark)">Smart &amp; Balanced</span></div>
+        <h3>The Professional Sedan</h3>
+        <p style="font-size:13px;color:var(--gray-60)">Claude Sonnet / GPT-4o. The everyday workhorse. Handles complex reasoning, nuanced writing, multi-step analysis — without the premium price of the top tier.</p>
+        <div class="fc-note"><strong style="color:var(--black)">Best for:</strong> Client-facing drafts, strategic analysis, code generation, nuanced reasoning, most consulting deliverables.</div>
+        <div class="fc-price">
+          <div><div class="fp-lbl">Input</div><div class="fp-val" style="color:var(--dg-dark)">$2.50–3.00</div></div>
+          <div><div class="fp-lbl">Output</div><div class="fp-val" style="color:var(--dg-dark)">$10–15</div></div>
+          <div><div class="fp-lbl">per 1M tokens</div></div>
+        </div>
+        <div class="fc-badge" style="background:var(--dg-wash);color:var(--dg-dark);border:1px solid rgba(134,188,37,.4)">Most versatile</div>
+      </div>
+      <div class="fleet-card r">
+        <div class="fc-accent" style="background:#C62828"></div>
+        <span class="fc-vehicle">🏎</span>
+        <div class="fc-tier"><span class="dot6" style="background:#C62828"></span><span style="color:#C62828">Maximum Power</span></div>
+        <h3>The Chauffeur-Driven Rolls</h3>
+        <p style="font-size:13px;color:var(--gray-60)">o1 / o3 / Claude Opus. Extraordinary capability, extraordinary cost. When the problem demands the deepest possible reasoning — and budget is secondary.</p>
+        <div class="fc-note"><strong style="color:var(--black)">Best for:</strong> Frontier research, complex multi-step reasoning, high-stakes one-off analyses, when being wrong is very expensive.</div>
+        <div class="fc-price">
+          <div><div class="fp-lbl">Input</div><div class="fp-val" style="color:#C62828">$15</div></div>
+          <div><div class="fp-lbl">Output</div><div class="fp-val" style="color:#C62828">$60–75</div></div>
+          <div><div class="fp-lbl">per 1M tokens</div></div>
+        </div>
+        <div class="fc-badge" style="background:rgba(198,40,40,.08);color:#C62828;border:1px solid rgba(198,40,40,.2)">Premium only</div>
+      </div>
+    </div>
+
+    <div class="fleet-insight r">
+      <div>
+        <div class="fi-head">🗺 Model Tiering</div>
+        <div class="fi-body">Route simple tasks to the auto-rickshaw and escalate complex ones to the sedan. This single architectural decision cuts enterprise AI spend by 60–80% with no quality loss. The routing logic itself costs almost nothing.</div>
+      </div>
+      <div>
+        <div class="fi-head">🔁 Prompt Caching</div>
+        <div class="fi-body">Like a driver who already knows your office address — he doesn't need directions again. Cached prompts (the same system context sent repeatedly) cost 90% less on repeat calls. One-time setup, permanent savings.</div>
+      </div>
+      <div>
+        <div class="fi-head">📋 The Briefing Card</div>
+        <div class="fi-body">Every driver gets a printed briefing card (system prompt) before starting. A 2,000-token card sent 50,000 times/month = 100M tokens in overhead alone. Write it once, write it tight.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════ ENTERPRISE MODELER ══════════════ -->
+<section id="modeler">
+  <div class="wrap">
+    <div class="eyebrow">Chapter 5 — The Fleet Bill</div>
+    <h2>What does your client's cab fleet cost?</h2>
+    <p style="max-width:580px;margin-top:14px">When a client deploys AI at scale, they're not taking one cab ride — they're running a fleet of thousands of rides a day. Use these sliders to model a real enterprise AI deployment and see what lands on the annual invoice.</p>
+
+    <div class="modeler-grid">
+      <div>
+        <div class="slider-grp">
+          <div class="sl-row"><span class="sl-name">Daily AI calls (rides/day)</span><span class="sl-val" id="vCalls">10,000</span></div>
+          <input type="range" min="100" max="500000" step="100" value="10000" id="sCalls" oninput="updateMod()">
+        </div>
+        <div class="slider-grp">
+          <div class="sl-row"><span class="sl-name">Avg. input tokens per call (directions)</span><span class="sl-val" id="vIn">800</span></div>
+          <input type="range" min="50" max="10000" step="50" value="800" id="sIn" oninput="updateMod()">
+        </div>
+        <div class="slider-grp">
+          <div class="sl-row"><span class="sl-name">Avg. output tokens per call (miles)</span><span class="sl-val" id="vOut">400</span></div>
+          <input type="range" min="50" max="4000" step="50" value="400" id="sOut" oninput="updateMod()">
+        </div>
+        <div class="slider-grp">
+          <div class="sl-row"><span class="sl-name">Agent loop multiplier (round trips)</span><span class="sl-val" id="vLoop">1×</span></div>
+          <input type="range" min="1" max="15" step="1" value="1" id="sLoop" oninput="updateMod()">
+        </div>
+        <div class="slider-grp">
+          <div class="sl-row"><span class="sl-name">Vehicle class</span></div>
+          <select class="msel" id="sMod" onchange="updateMod()">
+            <option value="gemini">🛺 Gemini Flash — $0.075/$0.30 per 1M</option>
+            <option value="gpt4omini">🛺 GPT-4o mini — $0.15/$0.60 per 1M</option>
+            <option value="haiku">🚗 Claude Haiku — $0.80/$4.00 per 1M</option>
+            <option value="sonnet" selected>🚕 Claude Sonnet — $3.00/$15.00 per 1M</option>
+            <option value="gpt4o">🚙 GPT-4o — $2.50/$10.00 per 1M</option>
+            <option value="o1">🏎 o1 / o3 — $15/$60 per 1M</option>
           </select>
         </div>
+        <div class="analogy-box">
+          <div class="ab-tag">🚕 Fleet Insight</div>
+          <div class="ab-text" id="modAnalogy">Adjust the sliders to see your client's monthly cab bill materialise in real time.</div>
+        </div>
       </div>
-
-      <div class="results-panel">
-        <div style="font-size:11px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;margin-bottom:16px">Projected Annual Cost</div>
-        <div class="result-big">
-          <div class="amount" id="r-annual">$0</div>
+      <div class="results-card">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray-40);margin-bottom:14px">Projected Annual Fleet Bill</div>
+        <div class="rc-big">
+          <div class="amount" id="rAnnual">—</div>
           <div class="period">per year</div>
         </div>
-        <div class="result-row">
-          <span class="rl">Per day</span>
-          <span class="rv" id="r-daily">$0</span>
-        </div>
-        <div class="result-row">
-          <span class="rl">Per month</span>
-          <span class="rv" id="r-monthly">$0</span>
-        </div>
-        <div class="result-row">
-          <span class="rl">Cost per interaction</span>
-          <span class="rv" id="r-per-call">$0.00</span>
-        </div>
-        <div class="result-row">
-          <span class="rl">Total tokens/month</span>
-          <span class="rv" id="r-tokens">0</span>
-        </div>
-
-        <div class="comparison-bars" style="margin-top:24px">
-          <div style="font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;margin-bottom:16px">Annual cost across models (same load)</div>
-          <div id="modelBars"></div>
+        <div class="rc-row"><span class="rl">Per day</span><span class="rv" id="rDay">—</span></div>
+        <div class="rc-row"><span class="rl">Per month</span><span class="rv" id="rMon">—</span></div>
+        <div class="rc-row"><span class="rl">Cost per ride (call)</span><span class="rv" id="rCall">—</span></div>
+        <div class="rc-row"><span class="rl">Total tokens / month</span><span class="rv" id="rToks">—</span></div>
+        <div class="rc-row"><span class="rl">Est. optimised cost (caching + routing)</span><span class="rv green" id="rOpt">—</span></div>
+        <div class="bar-section">
+          <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-40);margin-bottom:12px">Annual cost · same load · different vehicles</div>
+          <div id="modBars"></div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<hr class="divider">
+<hr class="div">
 
-<!-- OPTIMIZATION -->
-<section id="optimize">
-  <div class="section-tag">Module 05 — Strategic Optimization</div>
-  <h2>The Art of Token Efficiency</h2>
-  <p style="max-width:600px">The same task, written three ways, produces wildly different token counts — and costs. This is where AI strategy becomes business strategy.</p>
+<!-- ══════════════ OPTIMIZATION ══════════════ -->
+<section id="optimize" style="background:var(--white)">
+  <div class="wrap">
+    <div class="eyebrow">Chapter 6 — Smarter Directions</div>
+    <h2>Same destination. Wildly different fares.</h2>
+    <p style="max-width:580px;margin-top:14px">How you phrase your directions to the driver changes the meter reading dramatically — even for the same errand. Three people can ask for the same analysis and generate three very different token bills.</p>
 
-  <div class="optim-tabs">
-    <button class="tab-btn active" onclick="switchTab(this,'tab-verbose')">❌ Verbose Prompt</button>
-    <button class="tab-btn" onclick="switchTab(this,'tab-optimized')">✅ Optimized Prompt</button>
-    <button class="tab-btn" onclick="switchTab(this,'tab-cached')">🚀 Cached + Routed</button>
-  </div>
+    <div class="opt-tabs">
+      <button class="ot on" onclick="swTab(this,'t1')">❌ Verbose Briefing</button>
+      <button class="ot" onclick="swTab(this,'t2')">✅ Crisp GPS Address</button>
+      <button class="ot" onclick="swTab(this,'t3')">🚀 Pre-Loaded Cab</button>
+    </div>
 
-  <div id="tab-verbose" class="tab-pane active">
-    <div class="prompt-box">
-      <div style="font-size:11px;color:var(--t1);letter-spacing:.12em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;margin-bottom:16px">❌ Verbose — Typical First Attempt</div>
-      <div class="prompt-text">Hello, I hope this message finds you well. I wanted to reach out today because I have a task that I need your assistance with. Our company, Deloitte, is a professional services firm and we work with many clients across various industries. 
+    <div id="t1" class="tab-body on">
+      <div class="pb">
+        <div class="pb-head" style="color:#C62828">❌ Verbose — 10-minute verbal briefing</div>
+        <div class="pb-text">Hello, I hope this message finds you well. I wanted to reach out today because I have a task that I need your assistance with. Our company, Deloitte, is a professional services firm and we work with many clients across various industries.
 
-I would like you to act as a senior consultant and help me analyze the following situation. The client is a large financial services company and they are considering whether they should adopt artificial intelligence technology in their operations. 
+I would like you to act as a senior consultant and help me analyze the following situation. The client is a large financial services company and they are considering whether they should adopt artificial intelligence technology in their operations.
 
 Could you please provide a comprehensive analysis covering all relevant aspects including strategic considerations, risks, opportunities, implementation challenges, and any other factors you think might be important? Please be thorough and detailed in your response as this is very important.
 
-The client has mentioned that they are particularly interested in understanding the cost implications, the talent requirements, and the timeline for implementation. Please make sure to cover all of these points in your analysis.</div>
-      <div class="prompt-meta">
-        <div class="pm">
-          <div class="pn" style="color:var(--t1)">387</div>
-          <div class="pl">Tokens</div>
+The client has mentioned that they are particularly interested in understanding the cost implications, the talent requirements, and the timeline for implementation.</div>
+        <div class="pb-meta">
+          <div class="pm"><div class="pn" style="color:#C62828">387</div><div class="pl">Tokens</div></div>
+          <div class="pm"><div class="pn" style="color:#C62828">$0.00116</div><div class="pl">Per ride (Sonnet)</div></div>
+          <div class="pm"><div class="pn" style="color:#C62828">$348</div><div class="pl">Monthly · 10K calls</div></div>
         </div>
-        <div class="pm">
-          <div class="pn" style="color:var(--t1)">$0.00116</div>
-          <div class="pl">Per call (Sonnet)</div>
-        </div>
-        <div class="pm">
-          <div class="pn" style="color:var(--t1)">$348</div>
-          <div class="pl">Monthly @ 10k calls</div>
+      </div>
+      <div class="sb" style="border-color:rgba(198,40,40,.2);background:rgba(198,40,40,.02)">
+        <div class="sb-title" style="color:#C62828">What went wrong in the cab</div>
+        <ul class="tips">
+          <li>Pleasantries ("I hope this finds you well") cost tokens. The AI doesn't care. The meter does.</li>
+          <li>"Could you please" and "I would like you to" are verbal filler — identical output without them.</li>
+          <li>Repeating "please be thorough" doesn't improve quality. It costs 6 tokens and changes nothing.</li>
+          <li>Identity context ("Deloitte is a professional services firm") belongs in the driver briefing card (system prompt) — sent once, not every ride.</li>
+          <li>The vague "any other factors" invitation costs tokens and produces bloated output.</li>
+        </ul>
+        <div class="savings-big" style="background:rgba(198,40,40,.05)">
+          <div class="sb-num" style="color:#C62828">387 tokens</div>
+          <div class="sb-lab">~60% is filler. Same output without it.</div>
         </div>
       </div>
     </div>
-    <div class="savings-box" style="background:rgba(255,107,107,.04);border-color:rgba(255,107,107,.2)">
-      <div class="savings-title" style="color:var(--t1)">What's wrong here?</div>
-      <ul class="tip-list">
-        <li>Pleasantries ("I hope this message finds you well") cost tokens and add no value to the AI</li>
-        <li>"Could you please" and "I would like you to" are filler. The model doesn't need social cues.</li>
-        <li>Repeating "please make sure" and "please be thorough" don't improve output quality</li>
-        <li>The vague instruction "any other factors" invites unnecessarily verbose output</li>
-        <li>The identity context ("Deloitte is a professional services firm") is better in the system prompt once, not every call</li>
-      </ul>
-      <div class="savings-amount">
-        <div class="sa" style="color:var(--t1)">387 tokens</div>
-        <div class="sl">60% are filler — zero quality improvement</div>
-      </div>
-    </div>
-  </div>
 
-  <div id="tab-optimized" class="tab-pane">
-    <div class="prompt-box">
-      <div style="font-size:11px;color:#34D399;letter-spacing:.12em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;margin-bottom:16px">✅ Optimized — Sharp and Precise</div>
-      <div class="prompt-text">Analyze AI adoption for a large financial services client.
+    <div id="t2" class="tab-body">
+      <div class="pb">
+        <div class="pb-head" style="color:var(--dg-dark)">✅ Optimised — Crisp GPS address</div>
+        <div class="pb-text">Analyze AI adoption for a large financial services client.
 Cover: strategic rationale, key risks, implementation roadmap.
-Focus areas: cost implications, talent requirements, 12-month timeline.
-Format: Executive summary (3 bullets) + detailed sections.
+Focus: cost implications, talent requirements, 12-month timeline.
+Format: 3-bullet exec summary + detailed sections.
 Audience: C-suite, decision-ready output.</div>
-      <div class="prompt-meta">
-        <div class="pm">
-          <div class="pn" style="color:#34D399">58</div>
-          <div class="pl">Tokens</div>
+        <div class="pb-meta">
+          <div class="pm"><div class="pn" style="color:var(--dg-dark)">58</div><div class="pl">Tokens</div></div>
+          <div class="pm"><div class="pn" style="color:var(--dg-dark)">$0.000174</div><div class="pl">Per ride (Sonnet)</div></div>
+          <div class="pm"><div class="pn" style="color:var(--dg-dark)">$52</div><div class="pl">Monthly · 10K calls</div></div>
         </div>
-        <div class="pm">
-          <div class="pn" style="color:#34D399">$0.000174</div>
-          <div class="pl">Per call (Sonnet)</div>
-        </div>
-        <div class="pm">
-          <div class="pn" style="color:#34D399">$52</div>
-          <div class="pl">Monthly @ 10k calls</div>
+      </div>
+      <div class="sb" style="border-color:rgba(134,188,37,.3);background:var(--dg-wash2)">
+        <div class="sb-title" style="color:var(--dg-dark)">Why this cab ride is cheaper</div>
+        <ul class="tips">
+          <li>Imperative verb at the start ("Analyze") — the driver knows immediately where you're going.</li>
+          <li>Output format specified upfront ("3-bullet exec summary") constrains output length, reducing output token cost too.</li>
+          <li>"Audience: C-suite" shapes quality better than asking the model to "be thorough."</li>
+          <li>Line breaks create structure — not extra words. The meter doesn't tick on whitespace.</li>
+          <li>85% fewer input tokens. Equal or better output quality. Shorter output = lower output cost too.</li>
+        </ul>
+        <div class="savings-big" style="background:rgba(134,188,37,.1)">
+          <div class="sb-num" style="color:var(--dg-dark)">85% reduction</div>
+          <div class="sb-lab">387 → 58 tokens · saves $296/month at 10K calls</div>
         </div>
       </div>
     </div>
-    <div class="savings-box">
-      <div class="savings-title">Why this works</div>
-      <ul class="tip-list">
-        <li>Imperative voice ("Analyze", "Cover", "Focus") — models respond well to direct commands</li>
-        <li>Output format specified upfront reduces hallucination and token waste in output</li>
-        <li>Audience context ("C-suite") shapes the response quality better than verbose instructions</li>
-        <li>Line breaks create structure without adding superfluous words</li>
-        <li>Same task, 85% fewer input tokens — output quality is equal or better</li>
-      </ul>
-      <div class="savings-amount">
-        <div class="sa">85% reduction</div>
-        <div class="sl">387 → 58 tokens · saves $296/month at 10k calls</div>
-      </div>
-    </div>
-  </div>
 
-  <div id="tab-cached" class="tab-pane">
-    <div class="prompt-box">
-      <div style="font-size:11px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;margin-bottom:16px">🚀 Cached + Model-Routed Architecture</div>
-      <div class="prompt-text">SYSTEM (cached, sent once):
-You are a Deloitte senior strategy consultant. Context: financial services AI advisory engagement. Use structured, C-suite ready analysis. Standard frameworks: BCG matrix, risk registers, RACI charts.
-[+ 800 tokens of client background, industry data, previous analyses]
+    <div id="t3" class="tab-body">
+      <div class="pb">
+        <div class="pb-head" style="color:var(--dg-deep)">🚀 Cached + Routed — Pre-loaded cab with a regular driver</div>
+        <div class="pb-text">SYSTEM PROMPT — Briefing card (cached, paid once):
+You are a Deloitte senior strategy consultant.
+Context: financial services AI advisory engagement.
+Use structured C-suite-ready analysis. Frameworks: BCG, risk registers, RACI.
+[+ 800 tokens of client background loaded once]
 
-─────────────────────────────────────
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-USER (new each call — optimized):
-Analyze AI adoption. Cover: strategic rationale, risks, roadmap.
+USER PROMPT — each call (optimised):
+Analyze AI adoption.
+Cover: strategic rationale, risks, roadmap.
 Focus: cost, talent, 12-month timeline.
 Format: 3-bullet exec summary + sections.</div>
-      <div class="prompt-meta">
-        <div class="pm">
-          <div class="pn" style="color:var(--gold)">858</div>
-          <div class="pl">Total tokens</div>
-        </div>
-        <div class="pm">
-          <div class="pn" style="color:var(--gold)">$0.000090</div>
-          <div class="pl">Per call (w/ cache)</div>
-        </div>
-        <div class="pm">
-          <div class="pn" style="color:var(--gold)">$27</div>
-          <div class="pl">Monthly @ 10k calls</div>
+        <div class="pb-meta">
+          <div class="pm"><div class="pn" style="color:var(--dg-deep)">858</div><div class="pl">Total tokens</div></div>
+          <div class="pm"><div class="pn" style="color:var(--dg-deep)">$0.000090</div><div class="pl">Per ride (cached)</div></div>
+          <div class="pm"><div class="pn" style="color:var(--dg-deep)">$27</div><div class="pl">Monthly · 10K calls</div></div>
         </div>
       </div>
-    </div>
-    <div class="savings-box">
-      <div class="savings-title">The architecture advantage</div>
-      <ul class="tip-list">
-        <li><strong style="color:var(--text)">Prompt caching</strong>: the 800-token system context is cached. Subsequent calls pay ~10% of normal cost for those tokens</li>
-        <li><strong style="color:var(--text)">Model routing</strong>: use this pattern for classification/extraction tasks with Haiku (10× cheaper), escalate to Sonnet only for complex reasoning</li>
-        <li><strong style="color:var(--text)">Context reuse</strong>: shared client background injected once, used across all analysts and calls in the engagement</li>
-        <li>At enterprise scale (1M calls/month): this architecture saves <strong style="color:var(--gold)">$250,000+/year</strong> vs. the verbose approach</li>
-      </ul>
-      <div class="savings-amount">
-        <div class="sa">$321/mo → $27/mo</div>
-        <div class="sl">92% cost reduction · same output quality · @ 10k calls/month</div>
+      <div class="sb" style="border-color:rgba(134,188,37,.35);background:var(--dg-wash)">
+        <div class="sb-title" style="color:var(--dg-deep)">The regular driver advantage</div>
+        <ul class="tips">
+          <li><strong style="color:var(--black)">Prompt caching:</strong> Your regular driver already knows the client context. You pay 10% of normal for those cached tokens on every ride after the first.</li>
+          <li><strong style="color:var(--black)">Model routing:</strong> Use the auto-rickshaw (Haiku/Gemini) for classification and extraction tasks. Escalate to the sedan (Sonnet) for complex analysis only.</li>
+          <li><strong style="color:var(--black)">Context reuse:</strong> Client background injected once, shared across all analysts. No one repeats the same briefing.</li>
+          <li>At 1M calls/month, this architecture saves <strong style="color:var(--dg-dark)">$250K+/year</strong> versus the verbose approach.</li>
+        </ul>
+        <div class="savings-big" style="background:rgba(134,188,37,.15)">
+          <div class="sb-num" style="color:var(--dg-dark)">$321 → $27/mo</div>
+          <div class="sb-lab">92% cost reduction · same output · 10K calls/month</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<hr class="divider">
+<hr class="div">
 
-<!-- CONTEXT WINDOW -->
+<!-- ══════════════ CONTEXT WINDOW ══════════════ -->
 <section id="context">
-  <div class="section-tag">Module 06 — Context Window</div>
-  <h2>The Token Budget You Didn't Know You Had</h2>
-  <p style="max-width:600px">Every model has a <strong style="color:var(--text)">context window</strong> — the maximum tokens it can "hold in mind" at once. When you exceed it, the model forgets. When you approach it, costs spike. Visualize your real workload below.</p>
+  <div class="wrap">
+    <div class="eyebrow">Chapter 7 — The Driver's Memory</div>
+    <h2>When the cab driver forgets where you started</h2>
+    <p style="max-width:580px;margin-top:14px">Every AI model has a <strong style="color:var(--black)">context window</strong> — the total tokens it can hold in working memory at once. Think of it as the driver's mental dashboard. Overfill it, and they start forgetting earlier parts of the journey. Manage it strategically.</p>
 
-  <div class="cw-container reveal">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-      <span style="font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase">Context Window Usage</span>
-      <span style="font-size:12px;color:var(--gold);font-family:'IBM Plex Mono',monospace" id="cwTotal">0 / 128,000 tokens</span>
-    </div>
-    <div class="cw-bar-wrap" id="cwBar">
-      <div class="cw-segment" id="cw-system" style="background:rgba(56,189,248,.7);color:#000;width:0%">SYS</div>
-      <div class="cw-segment" id="cw-docs" style="background:rgba(201,168,68,.8);color:#000;width:0%">DOCS</div>
-      <div class="cw-segment" id="cw-history" style="background:rgba(192,132,252,.7);color:#000;width:0%">HIST</div>
-      <div class="cw-segment" id="cw-output" style="background:rgba(52,211,153,.7);color:#000;width:0%">OUT</div>
-    </div>
-    <div class="cw-legend">
-      <div class="cw-leg-item"><div class="cw-dot" style="background:rgba(56,189,248,.7)"></div>System prompt</div>
-      <div class="cw-leg-item"><div class="cw-dot" style="background:rgba(201,168,68,.8)"></div>Documents / context</div>
-      <div class="cw-leg-item"><div class="cw-dot" style="background:rgba(192,132,252,.7)"></div>Conversation history</div>
-      <div class="cw-leg-item"><div class="cw-dot" style="background:rgba(52,211,153,.7)"></div>Reserved output</div>
+    <div class="cw-wrap r">
+      <div class="cab-mem" style="margin-bottom:28px">
+        <h4><span>🚕</span> The Driver's Mental Dashboard</h4>
+        <p style="font-size:14px;color:var(--gray-60);line-height:1.7">Imagine your cab driver's working memory is a 128,000-click dashboard. As the ride progresses, the dashboard fills up: your initial directions, the map you shared, everything said during the journey, space reserved for what they'll say next. When it fills up, they start forgetting what you said at the beginning. <strong style="color:var(--black)">At enterprise scale, this means your AI starts giving incomplete answers.</strong></p>
+      </div>
+      <div class="cw-top">
+        <span class="cw-title">Dashboard fill — 128,000 token context window</span>
+        <span class="cw-used" id="cwUsed">0 / 128,000 (0%)</span>
+      </div>
+      <div class="cw-bar" id="cwBar">
+        <div class="cw-seg" id="cwSys" style="background:var(--black);color:var(--dg);width:0%">SYS</div>
+        <div class="cw-seg" id="cwDocs" style="background:var(--dg);color:var(--black);width:0%">DOCS</div>
+        <div class="cw-seg" id="cwHist" style="background:#4D7A00;color:var(--white);width:0%">HIST</div>
+        <div class="cw-seg" id="cwOutR" style="background:var(--gray-40);color:var(--white);width:0%">OUT</div>
+      </div>
+      <div class="cw-leg">
+        <div class="cw-li"><div class="cw-dot" style="background:var(--black)"></div>System prompt (driver briefing card)</div>
+        <div class="cw-li"><div class="cw-dot" style="background:var(--dg)"></div>Documents &amp; context (the map you handed over)</div>
+        <div class="cw-li"><div class="cw-dot" style="background:#4D7A00"></div>Conversation history (everything said in the cab)</div>
+        <div class="cw-li"><div class="cw-dot" style="background:var(--gray-40)"></div>Reserved for output (space for the driver to respond)</div>
+      </div>
+      <div class="cw-sliders">
+        <div class="slider-grp">
+          <div class="sl-row"><span class="sl-name">Briefing card / system prompt</span><span class="sl-val" id="vSys">2,000</span></div>
+          <input type="range" min="100" max="20000" step="100" value="2000" id="sSys" oninput="updateCW()">
+        </div>
+        <div class="slider-grp">
+          <div class="sl-row"><span class="sl-name">Documents (the map)</span><span class="sl-val" id="vDocs">20,000</span></div>
+          <input type="range" min="0" max="100000" step="500" value="20000" id="sDocs" oninput="updateCW()">
+        </div>
+        <div class="slider-grp">
+          <div class="sl-row"><span class="sl-name">Conversation history (in-cab dialogue)</span><span class="sl-val" id="vHist">5,000</span></div>
+          <input type="range" min="0" max="50000" step="500" value="5000" id="sHist" oninput="updateCW()">
+        </div>
+        <div class="slider-grp">
+          <div class="sl-row"><span class="sl-name">Reserved for driver's response</span><span class="sl-val" id="vOutR">4,000</span></div>
+          <input type="range" min="500" max="16000" step="500" value="4000" id="sOutR" oninput="updateCW()">
+        </div>
+      </div>
+      <div class="cw-warn" id="cwWarn"></div>
     </div>
 
-    <div class="cw-slider-row">
-      <div class="slider-group">
-        <div class="slider-label">
-          <span>System Prompt (tokens)</span>
-          <span class="slider-val" id="v-sys">2,000</span>
-        </div>
-        <input type="range" min="100" max="20000" step="100" value="2000" id="s-sys" oninput="updateCW()">
-      </div>
-      <div class="slider-group">
-        <div class="slider-label">
-          <span>Documents / Context (tokens)</span>
-          <span class="slider-val" id="v-docs">20,000</span>
-        </div>
-        <input type="range" min="0" max="100000" step="500" value="20000" id="s-docs" oninput="updateCW()">
-      </div>
-      <div class="slider-group">
-        <div class="slider-label">
-          <span>Conversation History (tokens)</span>
-          <span class="slider-val" id="v-hist">5,000</span>
-        </div>
-        <input type="range" min="0" max="50000" step="500" value="5000" id="s-hist" oninput="updateCW()">
-      </div>
-      <div class="slider-group">
-        <div class="slider-label">
-          <span>Reserved Output (tokens)</span>
-          <span class="slider-val" id="v-out">4,000</span>
-        </div>
-        <input type="range" min="500" max="16000" step="500" value="4000" id="s-out" oninput="updateCW()">
-      </div>
+    <div class="concept-pull r" style="margin-top:36px">
+      <div class="cq">"A long multi-turn conversation with an AI accumulates tokens in history. By message 20, you may be paying for 40,000 tokens of context per query — mostly from the conversation itself, not your new question. Smart systems summarise history periodically — like the driver writing a quick note rather than memorising everything word-for-word."</div>
+      <div class="ca">Strategic Implication — Long-context AI Systems</div>
     </div>
-    <div id="cwWarning" style="display:none;background:rgba(255,107,107,.1);border:1px solid rgba(255,107,107,.3);border-radius:6px;padding:12px 16px;margin-top:16px;font-size:13px;color:#FF6B6B;font-family:'IBM Plex Mono',monospace"></div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="footer-brand">Token Intelligence · Deloitte AI Literacy Series</div>
-  <p>Approximate token counts use BPE heuristics (cl100k_base approximation).<br>Pricing reflects public API rates and varies by enterprise agreement. Model tiers and costs change frequently.<br>Built for educational purposes · Deloitte Partners Edition · 2025</p>
+  <div class="footer-logo">TokenRide<span class="dot">.</span></div>
+  <div style="font-size:11px;color:#444;margin-bottom:6px;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Mono',monospace">Deloitte AI Literacy Series — Partners Edition</div>
+  <p style="font-size:12px;color:#333;line-height:1.9;max-width:640px;margin:0 auto">Token counts use BPE heuristics (~4 chars/token). Pricing reflects public API rates and varies by enterprise agreement.<br>Model tiers and pricing change frequently — verify with providers before client engagements.<br>Built for educational purposes · 2025</p>
 </footer>
 
 <script>
-const MODELS = {
-  sonnet:{name:'Claude Sonnet',input:3.00,output:15.00},
-  haiku:{name:'Claude Haiku',input:0.80,output:4.00},
-  gpt4o:{name:'GPT-4o',input:2.50,output:10.00},
-  gpt4omini:{name:'GPT-4o mini',input:0.15,output:0.60},
-  o1:{name:'o1/o3',input:15.00,output:60.00},
-  geminiflash:{name:'Gemini Flash',input:0.075,output:0.30}
-};
-const TOKEN_COLORS = ['var(--t1)','var(--t2)','var(--t3)','var(--t4)','var(--t5)','var(--t6)','var(--t7)','var(--t8)'];
-let currentModel = 'sonnet';
-let colorIdx = 0;
+const MDLS={gemini:{n:'Gemini Flash',i:.075,o:.30},gpt4omini:{n:'GPT-4o mini',i:.15,o:.60},haiku:{n:'Claude Haiku',i:.80,o:4},sonnet:{n:'Claude Sonnet',i:3,o:15},gpt4o:{n:'GPT-4o',i:2.5,o:10},o1:{n:'o1/o3',i:15,o:60}};
+const TC=['#86BC25','#2E7D32','#0277BD','#4D7A00','#00838F','#6A1B9A','#C62828','#E65100'];
 
-// Token approximation
-function approxTokenize(text) {
-  if (!text.trim()) return [];
-  const tokens = [];
-  const segs = text.match(/\s*[a-zA-Z'']+|\s*\d+|\s*[^\s\w]|\s+/g) || [];
-  segs.forEach(seg => {
-    const w = seg.replace(/^\s+/,'');
-    const sp = seg.length - w.length > 0 ? ' ' : '';
-    if (!w) return;
-    const isWord = /^[a-zA-Z'']+$/.test(w);
-    const isNum = /^\d+$/.test(w);
-    if (isWord) {
-      if (w.length <= 5) {
-        tokens.push(sp + w);
-      } else if (w.length <= 9) {
-        const m = Math.ceil(w.length / 2);
-        tokens.push(sp + w.slice(0, m));
-        tokens.push(w.slice(m));
-      } else {
-        let first = true;
-        for (let i = 0; i < w.length; i += 4) {
-          tokens.push((first ? sp : '') + w.slice(i, i + 4));
-          first = false;
-        }
-      }
-    } else if (isNum) {
-      let first = true;
-      for (let i = 0; i < w.length; i += 3) {
-        tokens.push((first ? sp : '') + w.slice(i, i + 3));
-        first = false;
-      }
-    } else {
-      tokens.push(sp + w);
-    }
-  });
-  return tokens;
-}
-
-function countWords(text) {
-  return (text.trim().match(/\S+/g) || []).length;
-}
-
-function renderTokens(text) {
-  const tokens = approxTokenize(text);
-  colorIdx = 0;
-  return tokens.map(t => {
-    const c = TOKEN_COLORS[colorIdx++ % TOKEN_COLORS.length];
-    const bg = c.replace('var(','').replace(')','');
-    const content = t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    return `<span class="tok" style="background:${c}22;color:${c};border-color:${c}44" title="${t.trim()} = 1 token">${content}</span>`;
-  }).join('');
-}
-
-let labTimer = null;
-document.getElementById('labInput').addEventListener('input', function() {
-  clearTimeout(labTimer);
-  labTimer = setTimeout(() => updateLab(this.value), 60);
-});
-
-function updateLab(text) {
-  const words = countWords(text);
-  const tokens = approxTokenize(text);
-  const tcount = tokens.length;
-  document.getElementById('statWords').textContent = words.toLocaleString();
-  document.getElementById('statTokens').textContent = tcount.toLocaleString();
-  const m = MODELS[currentModel];
-  const cost = (tcount / 1e6) * m.input;
-  document.getElementById('statCost').textContent = cost < 0.01 ? '$' + cost.toFixed(5) : '$' + cost.toFixed(4);
-  const monthly10k = cost * 10000;
-  document.getElementById('costBreakdown').innerHTML = `Model: ${m.name} · $${m.input}/1M input · $${m.output}/1M output<br>At 10,000 calls/day → <strong style="color:var(--gold)">$${monthly10k.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',')}/month</strong>`;
-  const out = document.getElementById('labOutput');
-  if (!text.trim()) {
-    out.innerHTML = '<div style="color:var(--muted);font-size:13px;font-family:\'IBM Plex Mono\',monospace;opacity:.5">← Start typing to see tokens appear...</div>';
-    return;
-  }
-  out.innerHTML = '<div class="token-display">' + renderTokens(text) + '</div>';
-}
-
-function selectModel(btn) {
-  document.querySelectorAll('.model-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  currentModel = btn.dataset.model;
-  const text = document.getElementById('labInput').value;
-  if (text) updateLab(text);
-}
-
-// ENTERPRISE MODELER
-function fmtMoney(n) {
-  if (n >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
-  if (n >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
-  return '$' + n.toFixed(0);
-}
-
-function updateModeler() {
-  const calls = parseInt(document.getElementById('s-calls').value);
-  const inp = parseInt(document.getElementById('s-input').value);
-  const out = parseInt(document.getElementById('s-output').value);
-  const loop = parseInt(document.getElementById('s-loop').value);
-  const modelKey = document.getElementById('s-model').value;
-
-  document.getElementById('v-calls').textContent = calls.toLocaleString();
-  document.getElementById('v-input').textContent = inp.toLocaleString();
-  document.getElementById('v-output').textContent = out.toLocaleString();
-  document.getElementById('v-loop').textContent = loop + '×';
-
-  const m = MODELS[modelKey];
-  const dailyCalls = calls * loop;
-  const dailyCost = dailyCalls * ((inp / 1e6) * m.input + (out / 1e6) * m.output);
-  const monthlyCost = dailyCost * 30;
-  const annualCost = dailyCost * 365;
-  const perCall = dailyCost / dailyCalls;
-  const monthlyTokens = dailyCalls * (inp + out) * 30;
-
-  document.getElementById('r-annual').textContent = fmtMoney(annualCost);
-  document.getElementById('r-daily').textContent = fmtMoney(dailyCost);
-  document.getElementById('r-monthly').textContent = fmtMoney(monthlyCost);
-  document.getElementById('r-per-call').textContent = '$' + perCall.toFixed(5);
-  document.getElementById('r-tokens').textContent = (monthlyTokens / 1e6).toFixed(1) + 'M';
-
-  // Comparison bars
-  const modelOrder = [
-    {key:'geminiflash', label:'Gemini Flash', color:'#34D399'},
-    {key:'gpt4omini', label:'GPT-4o mini', color:'#4ECDC4'},
-    {key:'haiku', label:'Claude Haiku', color:'#38BDF8'},
-    {key:'gpt4o', label:'GPT-4o', color:'#FBBF24'},
-    {key:'sonnet', label:'Claude Sonnet', color:'#C9A844'},
-    {key:'o1', label:'o1 / o3', color:'#FF6B6B'}
-  ];
-  const costs = modelOrder.map(mo => {
-    const mm = MODELS[mo.key];
-    return {
-      ...mo,
-      cost: dailyCalls * ((inp / 1e6) * mm.input + (out / 1e6) * mm.output) * 365
-    };
-  });
-  const maxC = Math.max(...costs.map(c => c.cost));
-  document.getElementById('modelBars').innerHTML = costs.map(c => `
-    <div class="bar-label">
-      <span style="color:${c.color}">${c.label}</span>
-      <span>${fmtMoney(c.cost)}</span>
-    </div>
-    <div class="bar-track">
-      <div class="bar-fill" style="width:${maxC > 0 ? (c.cost/maxC*100).toFixed(1) : 0}%;background:${c.color}"></div>
-    </div>
-  `).join('');
-}
-
-// TABS
-function switchTab(btn, id) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById(id).classList.add('active');
-}
-
-// CONTEXT WINDOW
-function updateCW() {
-  const WINDOW = 128000;
-  const sys = parseInt(document.getElementById('s-sys').value);
-  const docs = parseInt(document.getElementById('s-docs').value);
-  const hist = parseInt(document.getElementById('s-hist').value);
-  const out = parseInt(document.getElementById('s-out').value);
-  document.getElementById('v-sys').textContent = sys.toLocaleString();
-  document.getElementById('v-docs').textContent = docs.toLocaleString();
-  document.getElementById('v-hist').textContent = hist.toLocaleString();
-  document.getElementById('v-out').textContent = out.toLocaleString();
-  const total = sys + docs + hist + out;
-  const pct = v => Math.min(100, (v / WINDOW * 100)).toFixed(1) + '%';
-  document.getElementById('cw-system').style.width = pct(sys);
-  document.getElementById('cw-docs').style.width = pct(docs);
-  document.getElementById('cw-history').style.width = pct(hist);
-  document.getElementById('cw-output').style.width = pct(out);
-  const usedPct = Math.round(total / WINDOW * 100);
-  document.getElementById('cwTotal').textContent = total.toLocaleString() + ' / 128,000 tokens (' + usedPct + '%)';
-  const warn = document.getElementById('cwWarning');
-  if (total > WINDOW * 0.95) {
-    warn.style.display = 'block';
-    warn.textContent = '⚠ OVERFLOW: You\'ve exceeded the context window. The model will start truncating earlier context — responses degrade and important information is lost.';
-  } else if (total > WINDOW * 0.8) {
-    warn.style.display = 'block';
-    warn.style.color = '#FBBF24';
-    warn.style.borderColor = 'rgba(251,191,36,.3)';
-    warn.style.background = 'rgba(251,191,36,.05)';
-    warn.textContent = '⚡ WARNING: Approaching context limit (' + usedPct + '% used). Consider compressing history or reducing document size.';
-  } else {
-    warn.style.display = 'none';
-  }
-}
-
-// HERO ANIMATION
-const demoWords = [
-  {word:'partnership',tokens:['partner','ship'],colors:['var(--t1)','var(--t2)']},
-  {word:'tokenization',tokens:['token','ization'],colors:['var(--t3)','var(--t4)']},
-  {word:'Deloitte',tokens:['Del','oitte'],colors:['var(--gold)','var(--t5)']},
-  {word:'strategy',tokens:['strategy'],colors:['var(--t6)']},
-  {word:'implementation',tokens:['implement','ation'],colors:['var(--t7)','var(--t8)']},
-  {word:'AI',tokens:['AI'],colors:['var(--electric)']},
-  {word:'ROI',tokens:['RO','I'],colors:['var(--t1)','var(--t2)']},
-  {word:'benchmark',tokens:['bench','mark'],colors:['var(--t3)','var(--t4)']}
+// ── HERO ANIMATION ──
+const queries=[
+  {q:'Please provide a comprehensive strategic assessment covering all relevant aspects of AI adoption for our financial services client...',inp:300,out:580},
+  {q:'Analyze AI adoption for financial services client. Cover: risks, roadmap. Format: exec summary.',inp:44,out:180}
 ];
-let burstIdx = 0;
-function runBurst() {
-  const demo = demoWords[burstIdx % demoWords.length];
-  const wordEl = document.getElementById('burstWord');
-  const chipsEl = document.getElementById('tokenChips');
-  const countEl = document.getElementById('tokenCountLabel');
-  wordEl.classList.remove('active');
-  chipsEl.innerHTML = '';
-  countEl.classList.remove('show');
-  setTimeout(() => {
-    wordEl.textContent = demo.word;
-    wordEl.style.color = 'var(--text)';
-    wordEl.classList.add('active');
-  }, 200);
-  setTimeout(() => {
-    wordEl.classList.remove('active');
-    setTimeout(() => {
-      demo.tokens.forEach((t, i) => {
-        const chip = document.createElement('div');
-        chip.className = 'chip';
-        chip.textContent = t;
-        chip.style.background = demo.colors[i] + '22';
-        chip.style.color = demo.colors[i];
-        chip.style.borderColor = demo.colors[i] + '55';
-        chipsEl.appendChild(chip);
-        setTimeout(() => chip.classList.add('visible'), i * 120);
-      });
-      countEl.textContent = demo.tokens.length + ' token' + (demo.tokens.length > 1 ? 's' : '');
-      setTimeout(() => countEl.classList.add('show'), demo.tokens.length * 120 + 100);
-    }, 200);
-  }, 1800);
-  setTimeout(() => {
-    chipsEl.querySelectorAll('.chip').forEach(c => c.classList.remove('visible'));
-    countEl.classList.remove('show');
-  }, 3800);
-  burstIdx++;
+let hI=0,hTick=0,hMax=0,hTimer=null;
+function runHero(){
+  clearInterval(hTimer);
+  const q=queries[hI%queries.length];
+  hMax=q.inp+q.out;hTick=0;
+  let typed=0;
+  document.getElementById('heroTyping').textContent='';
+  hTimer=setInterval(()=>{
+    hTick=Math.min(hTick+3,hMax);
+    const inp=Math.min(hTick,q.inp),out=Math.max(0,hTick-q.inp);
+    const fare=((inp/1e6)*3)+((out/1e6)*15);
+    document.getElementById('heroFare').textContent='$'+fare.toFixed(7);
+    document.getElementById('heroIn').textContent=inp;
+    document.getElementById('heroOut').textContent=out;
+    document.getElementById('heroTotal').textContent=hTick;
+    if(typed<q.q.length){typed=Math.min(typed+3,q.q.length);document.getElementById('heroTyping').textContent=q.q.slice(0,typed)+(typed<q.q.length?'▎':'');}
+    if(hTick>=hMax){
+      clearInterval(hTimer);
+      document.getElementById('heroStatus').textContent=hTick>200?'Verbose prompt — high meter reading. Try the Fare Calculator →':'Efficient prompt — lean fare. 85% fewer tokens.';
+      setTimeout(()=>{hI++;runHero();},3000);
+    }
+  },28);
 }
-runBurst();
-setInterval(runBurst, 4200);
+runHero();
 
-// SCROLL REVEAL
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold: 0.1});
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// ── WORD SPLITTER ──
+const WORDS=[
+  {w:'implementation',t:['implement','ation']},
+  {w:'tokenization',t:['token','ization']},
+  {w:'Deloitte',t:['Del','oitte']},
+  {w:'benchmark',t:['bench','mark']},
+  {w:'partnership',t:['partner','ship']},
+  {w:'AI',t:['AI']},
+  {w:'strategic',t:['strat','egic']},
+  {w:'generative',t:['gen','erative']},
+  {w:'optimization',t:['optim','ization']},
+  {w:'consulting',t:['consult','ing']}
+];
+let wI=0;
+function nextWord(){
+  const d=WORDS[wI++%WORDS.length];
+  document.getElementById('cmWord').textContent=d.w;
+  const ch=document.getElementById('cmChips');
+  ch.innerHTML='';
+  d.t.forEach((t,i)=>{
+    const el=document.createElement('span');
+    el.className='cm-chip';
+    el.textContent=t;
+    const c=TC[i*2%TC.length];
+    el.style.color=c;el.style.borderColor=c+'66';el.style.background=c+'22';
+    ch.appendChild(el);
+    setTimeout(()=>el.classList.add('show'),i*200+50);
+  });
+  document.getElementById('cmCount').textContent=d.t.length;
+}
+nextWord();
+setInterval(nextWord,3400);
 
-// INIT
-updateModeler();
-updateCW();
+// ── TOKENIZER ──
+function approxToks(text){
+  if(!text.trim())return[];
+  const tks=[];
+  const segs=text.match(/\s*[a-zA-Z'']+|\s*\d+|\s*[^\s\w]|\s+/g)||[];
+  segs.forEach(seg=>{
+    const w=seg.replace(/^\s+/,''),sp=seg.length-w.length>0?' ':'';
+    if(!w)return;
+    const iW=/^[a-zA-Z'']+$/.test(w);
+    if(iW){
+      if(w.length<=5)tks.push(sp+w);
+      else if(w.length<=9){const m=Math.ceil(w.length/2);tks.push(sp+w.slice(0,m));tks.push(w.slice(m));}
+      else{let f=1;for(let i=0;i<w.length;i+=4){tks.push((f?sp:'')+w.slice(i,i+4));f=0;}}
+    } else if(/^\d+$/.test(w)){let f=1;for(let i=0;i<w.length;i+=3){tks.push((f?sp:'')+w.slice(i,i+3));f=0;}}
+    else tks.push(sp+w);
+  });
+  return tks;
+}
+let labModel='sonnet',labTimer=null;
+document.getElementById('labTa').addEventListener('input',function(){
+  clearTimeout(labTimer);labTimer=setTimeout(()=>updateLab(this.value),80);
+});
+function selModel(btn){
+  document.querySelectorAll('.mb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');labModel=btn.dataset.m;
+  updateLab(document.getElementById('labTa').value);
+}
+function updateLab(text){
+  const tks=approxToks(text);
+  const words=(text.trim().match(/\S+/g)||[]).length;
+  const m=MDLS[labModel];
+  const cost=(tks.length/1e6)*m.i;
+  document.getElementById('stWords').textContent=words.toLocaleString();
+  document.getElementById('stToks').textContent=tks.length.toLocaleString();
+  document.getElementById('stCost').textContent=cost<0.001?'$'+cost.toFixed(6):'$'+cost.toFixed(5);
+  const mo10k=cost*300000;
+  document.getElementById('tickInfo').innerHTML=`${m.n} · $${m.i}/1M input<br>At 10K calls/day → <strong style="color:var(--dg)">${'$'+mo10k.toLocaleString('en',{maximumFractionDigits:0})}/month</strong>`;
+  const vis=document.getElementById('tokVis');
+  if(!text.trim()){vis.innerHTML='<span style="color:#1A1A1A">← start typing above</span>';return;}
+  let ci=0;
+  vis.innerHTML=approxToks(text).map(t=>{
+    const c=TC[ci++%TC.length];
+    const esc=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    return `<span style="background:${c}28;color:${c};border-radius:2px;padding:1px 0;border:1px solid ${c}50" title="1 token / 1 meter click">${esc}</span>`;
+  }).join('');
+  const callouts=[[0,50,"Crisp GPS address — low fare."],[50,150,"Moderate briefing. Reasonable fare."],[150,400,"Getting wordy. Review for filler before the meter climbs higher."],[400,1000,"Long briefing. Consider what the driver actually needs."],[1000,99999,"Extended briefing — equivalent to handing the driver a novel. Consider caching this context."]];
+  const co=callouts.find(([a,b])=>tks.length>=a&&tks.length<b);
+  if(co)document.getElementById('labCallout').innerHTML=`🚕 <strong>${tks.length} clicks</strong> — ${co[2]}`;
+}
+setTimeout(()=>{
+  document.getElementById('labTa').value='Please provide a strategic assessment of generative AI adoption for our financial services client, covering implementation costs, talent requirements, and a 12-month roadmap.';
+  updateLab(document.getElementById('labTa').value);
+},500);
 
-// Pre-load a demo
-setTimeout(() => {
-  const demo = `Please provide a strategic assessment of generative AI adoption for our financial services client. They are evaluating implementation across operations, compliance, and customer experience functions.`;
-  document.getElementById('labInput').value = demo;
-  updateLab(demo);
-}, 500);
+// ── MODELER ──
+function fmtM(n){
+  if(n>=1e6)return'$'+(n/1e6).toFixed(1)+'M';
+  if(n>=1e3)return'$'+(n/1e3).toFixed(0)+'K';
+  return'$'+n.toFixed(0);
+}
+const analogies=[[0,1000,"Running a small fleet. Model choice matters less than prompt quality at this scale."],[1000,10000,"A mid-size corporate fleet. The difference between vehicle classes now shows meaningfully on the monthly invoice."],[10000,100000,"Enterprise fleet territory. Model routing and prompt caching have six-figure annual impact. This is where AI strategy pays for itself."],[100000,999999,"Hyperscale operations. At this volume, a 10-token reduction per call saves over $1M/year on the premium model. Token efficiency is a P&L line."]];
+function updateMod(){
+  const calls=+document.getElementById('sCalls').value;
+  const inp=+document.getElementById('sIn').value;
+  const out=+document.getElementById('sOut').value;
+  const loop=+document.getElementById('sLoop').value;
+  const mk=document.getElementById('sMod').value;
+  document.getElementById('vCalls').textContent=calls.toLocaleString();
+  document.getElementById('vIn').textContent=inp.toLocaleString();
+  document.getElementById('vOut').textContent=out.toLocaleString();
+  document.getElementById('vLoop').textContent=loop+'×';
+  const m=MDLS[mk];
+  const dc=calls*loop*((inp/1e6)*m.i+(out/1e6)*m.o);
+  const mc=dc*30,ac=dc*365,pc=dc/calls/loop;
+  const mt=calls*loop*(inp+out)*30;
+  document.getElementById('rAnnual').textContent=fmtM(ac);
+  document.getElementById('rDay').textContent=fmtM(dc);
+  document.getElementById('rMon').textContent=fmtM(mc);
+  document.getElementById('rCall').textContent='$'+pc.toFixed(5);
+  document.getElementById('rToks').textContent=(mt/1e6).toFixed(1)+'M';
+  document.getElementById('rOpt').textContent=fmtM(ac*0.12)+' (est. w/ caching + routing)';
+  const mord=[{k:'gemini',l:'🛺 Gemini Flash',c:'#34D399'},{k:'gpt4omini',l:'🛺 GPT-4o mini',c:'#86BC25'},{k:'haiku',l:'🚗 Haiku',c:'#4D7A00'},{k:'gpt4o',l:'🚙 GPT-4o',c:'#0277BD'},{k:'sonnet',l:'🚕 Sonnet',c:'#2E7D32'},{k:'o1',l:'🏎 o1/o3',c:'#C62828'}];
+  const costs=mord.map(mo=>{const mm=MDLS[mo.k];return{...mo,c2:calls*loop*((inp/1e6)*mm.i+(out/1e6)*mm.o)*365};});
+  const mx=Math.max(...costs.map(x=>x.c2));
+  document.getElementById('modBars').innerHTML=costs.map(c=>`
+    <div class="bar-lbl"><span style="color:${c.c}">${c.l}</span><span style="color:var(--gray-60)">${fmtM(c.c2)}</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:${mx>0?(c.c2/mx*100).toFixed(1):0}%;background:${c.c}"></div></div>
+  `).join('');
+  const a=analogies.find(([lo,hi])=>calls>=lo&&calls<hi)||analogies[analogies.length-1];
+  document.getElementById('modAnalogy').textContent=a[2];
+}
+
+// ── TABS ──
+function swTab(btn,id){
+  document.querySelectorAll('.ot').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.tab-body').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');document.getElementById(id).classList.add('on');
+}
+
+// ── CONTEXT WINDOW ──
+function updateCW(){
+  const W=128000;
+  const sys=+document.getElementById('sSys').value;
+  const docs=+document.getElementById('sDocs').value;
+  const hist=+document.getElementById('sHist').value;
+  const outr=+document.getElementById('sOutR').value;
+  document.getElementById('vSys').textContent=sys.toLocaleString();
+  document.getElementById('vDocs').textContent=docs.toLocaleString();
+  document.getElementById('vHist').textContent=hist.toLocaleString();
+  document.getElementById('vOutR').textContent=outr.toLocaleString();
+  const tot=sys+docs+hist+outr;
+  const pct=v=>Math.min(100,(v/W*100)).toFixed(1)+'%';
+  document.getElementById('cwSys').style.width=pct(sys);
+  document.getElementById('cwDocs').style.width=pct(docs);
+  document.getElementById('cwHist').style.width=pct(hist);
+  document.getElementById('cwOutR').style.width=pct(outr);
+  const up=Math.round(tot/W*100);
+  document.getElementById('cwUsed').textContent=tot.toLocaleString()+' / 128,000 ('+up+'%)';
+  const w=document.getElementById('cwWarn');
+  if(tot>W){
+    w.style.display='block';w.style.color='#C62828';w.style.background='rgba(198,40,40,.05)';w.style.border='1px solid rgba(198,40,40,.2)';
+    w.textContent='⛔ OVERFLOW — Dashboard exceeded. The driver has forgotten the start of your journey. Responses will be incomplete or contradictory.';
+  } else if(tot>W*.85){
+    w.style.display='block';w.style.color='#B45309';w.style.background='rgba(180,83,9,.05)';w.style.border='1px solid rgba(180,83,9,.2)';
+    w.textContent='⚠ WARNING — Dashboard '+up+'% full. The driver is struggling to hold it all. Summarise history or reduce document size before the next turn.';
+  } else if(tot>W*.6){
+    w.style.display='block';w.style.color=var_dg_dark||'#4D7A00';w.style.background='rgba(134,188,37,.05)';w.style.border='1px solid rgba(134,188,37,.2)';
+    w.textContent='💡 NOTICE — '+up+'% used. Healthy for now, but long conversations will fill this dashboard quickly. Plan your context management strategy.';
+  } else {
+    w.style.display='none';
+  }
+}
+
+// ── FIX: inline var resolution ──
+function updateCW2(){
+  const W=128000;
+  const sys=+document.getElementById('sSys').value;
+  const docs=+document.getElementById('sDocs').value;
+  const hist=+document.getElementById('sHist').value;
+  const outr=+document.getElementById('sOutR').value;
+  document.getElementById('vSys').textContent=sys.toLocaleString();
+  document.getElementById('vDocs').textContent=docs.toLocaleString();
+  document.getElementById('vHist').textContent=hist.toLocaleString();
+  document.getElementById('vOutR').textContent=outr.toLocaleString();
+  const tot=sys+docs+hist+outr;
+  const pct=v=>Math.min(100,(v/W*100)).toFixed(1)+'%';
+  document.getElementById('cwSys').style.width=pct(sys);
+  document.getElementById('cwDocs').style.width=pct(docs);
+  document.getElementById('cwHist').style.width=pct(hist);
+  document.getElementById('cwOutR').style.width=pct(outr);
+  const up=Math.round(tot/W*100);
+  document.getElementById('cwUsed').textContent=tot.toLocaleString()+' / 128,000 ('+up+'%)';
+  const w=document.getElementById('cwWarn');
+  if(tot>W){
+    w.style.display='block';w.style.color='#C62828';w.style.background='rgba(198,40,40,.05)';w.style.border='1px solid rgba(198,40,40,.2)';
+    w.textContent='⛔ OVERFLOW — Dashboard exceeded. The driver has forgotten the start of your journey. Responses will be incomplete or contradictory.';
+  } else if(tot>W*.85){
+    w.style.display='block';w.style.color='#B45309';w.style.background='rgba(180,83,9,.05)';w.style.border='1px solid rgba(180,83,9,.2)';
+    w.textContent='⚠ WARNING — Dashboard '+up+'% full. The driver is struggling. Summarise history or reduce documents.';
+  } else if(tot>W*.6){
+    w.style.display='block';w.style.color='#4D7A00';w.style.background='rgba(134,188,37,.05)';w.style.border='1px solid rgba(134,188,37,.2)';
+    w.textContent='💡 NOTICE — '+up+'% used. Healthy now, but long conversations will fill this dashboard quickly.';
+  } else {
+    w.style.display='none';
+  }
+}
+// Override the broken one
+document.getElementById('sSys').oninput=updateCW2;
+document.getElementById('sDocs').oninput=updateCW2;
+document.getElementById('sHist').oninput=updateCW2;
+document.getElementById('sOutR').oninput=updateCW2;
+
+// ── SCROLL REVEAL ──
+const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('v')});},{threshold:.1});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+
+// ── INIT ──
+updateMod();updateCW2();
 </script>
 </body>
 </html>
