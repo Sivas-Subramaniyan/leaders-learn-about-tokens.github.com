@@ -42,6 +42,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .nav-links a{font-size:11px;font-weight:500;color:var(--gray-60);text-decoration:none;padding:0 12px;letter-spacing:.07em;text-transform:uppercase;height:52px;display:flex;align-items:center;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
 .nav-links a:hover{color:var(--black);border-bottom-color:var(--dg)}
 .nav-pill{background:var(--dg);color:var(--white);font-size:10px;font-weight:600;letter-spacing:.1em;padding:5px 14px;border-radius:2px;text-transform:uppercase;margin-left:auto;white-space:nowrap}
+.nav-back{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--gray-40);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;padding:0 16px 0 0;border-right:1px solid var(--gray-10);margin-right:16px;height:52px;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:color .2s}
+.nav-back:hover{color:var(--dg-dark)}
 
 /* ── TYPE ── */
 h1,h2,h3{font-family:'Playfair Display',serif}
@@ -254,6 +256,7 @@ footer{background:var(--black);color:rgba(255,255,255,.35);padding:48px 5%;text-
 <!-- NAV -->
 <nav>
   <div class="nav-logo">TokenRide<span class="dot">.</span></div>
+  <a class="nav-back" href="Token-economics-for-enterprise-ai.html">← Framework</a>
   <div class="nav-links">
     <a href="#meter">The Meter</a>
     <a href="#io">Directions vs Miles</a>
